@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :coffees, through: :user_coffees
   has_many :extractions
   has_many :tastings
+  has_many :accessories
 end

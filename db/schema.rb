@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_07_192726) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_223550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accessories", force: :cascade do |t|
-    t.string "type"
+    t.string "accessory_type"
     t.string "name"
     t.boolean "default"
     t.text "comments"
@@ -63,12 +63,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_192726) do
     t.index ["user_id"], name: "index_extractions_on_user_id"
   end
 
-  create_table "flavor", force: :cascade do |t|
+  create_table "flavors", force: :cascade do |t|
     t.string "name"
-    t.bigint "tasting_id", null: false
+    t.bigint "tasting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tasting_id"], name: "index_flavor_on_tasting_id"
+    t.string "color_code"
+    t.index ["tasting_id"], name: "index_flavors_on_tasting_id"
   end
 
   create_table "tastings", force: :cascade do |t|
@@ -118,7 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_192726) do
 
   create_table "varieties", force: :cascade do |t|
     t.string "name"
-    t.bigint "coffee_id", null: false
+    t.bigint "coffee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["coffee_id"], name: "index_varieties_on_coffee_id"
@@ -129,7 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_192726) do
   add_foreign_key "extractions", "coffees"
   add_foreign_key "extractions", "user_coffees"
   add_foreign_key "extractions", "users"
-  add_foreign_key "flavor", "tastings"
+  add_foreign_key "flavors", "tastings"
   add_foreign_key "tastings", "extractions"
   add_foreign_key "tastings", "users"
   add_foreign_key "user_coffees", "coffees"

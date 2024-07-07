@@ -1,0 +1,9 @@
+<h1>Flavors</h1>
+<div>
+  <% @flavors.each do |flavor| %>
+    <div class="flavor">
+      <div class="color-box" style="background-color: <%= flavor.color_code %>;"></div>
+      <span><%= flavor.name %></span>
+    </div>
+  <% end %>
+</div>
