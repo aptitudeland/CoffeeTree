@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_144947) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_192726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,82 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_144947) do
     t.index ["user_id"], name: "index_accessories_on_user_id"
   end
 
+  create_table "coffees", force: :cascade do |t|
+    t.string "roaster"
+    t.date "roasting_date"
+    t.string "name"
+    t.string "process"
+    t.string "country"
+    t.string "region"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.integer "altitude_low"
+    t.integer "altitude_high"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "extractions", force: :cascade do |t|
+    t.string "brewing_method"
+    t.bigint "coffee_id", null: false
+    t.bigint "user_coffee_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "accessory_id", null: false
+    t.decimal "weight_in"
+    t.integer "water_temperature"
+    t.integer "pre_infusion_time"
+    t.decimal "bloom_weight"
+    t.integer "extraction_time"
+    t.decimal "weight_out"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accessory_id"], name: "index_extractions_on_accessory_id"
+    t.index ["coffee_id"], name: "index_extractions_on_coffee_id"
+    t.index ["user_coffee_id"], name: "index_extractions_on_user_coffee_id"
+    t.index ["user_id"], name: "index_extractions_on_user_id"
+  end
+
+  create_table "flavor", force: :cascade do |t|
+    t.string "name"
+    t.bigint "tasting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tasting_id"], name: "index_flavor_on_tasting_id"
+  end
+
+  create_table "tastings", force: :cascade do |t|
+    t.bigint "extraction_id", null: false
+    t.bigint "user_id", null: false
+    t.string "tasting_type"
+    t.integer "rating"
+    t.text "comment"
+    t.integer "fragrance"
+    t.integer "acidity"
+    t.integer "flavor"
+    t.integer "body"
+    t.integer "aftertaste"
+    t.integer "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["extraction_id"], name: "index_tastings_on_extraction_id"
+    t.index ["user_id"], name: "index_tastings_on_user_id"
+  end
+
+  create_table "user_coffees", force: :cascade do |t|
+    t.integer "bag_weight"
+    t.integer "weight_left"
+    t.decimal "price"
+    t.text "personal_notes"
+    t.boolean "archived"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "coffee_id", null: false
+    t.index ["coffee_id"], name: "index_user_coffees_on_coffee_id"
+    t.index ["user_id"], name: "index_user_coffees_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,5 +116,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_144947) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "varieties", force: :cascade do |t|
+    t.string "name"
+    t.bigint "coffee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_varieties_on_coffee_id"
+  end
+
   add_foreign_key "accessories", "users"
+  add_foreign_key "extractions", "accessories"
+  add_foreign_key "extractions", "coffees"
+  add_foreign_key "extractions", "user_coffees"
+  add_foreign_key "extractions", "users"
+  add_foreign_key "flavor", "tastings"
+  add_foreign_key "tastings", "extractions"
+  add_foreign_key "tastings", "users"
+  add_foreign_key "user_coffees", "coffees"
+  add_foreign_key "user_coffees", "users"
+  add_foreign_key "varieties", "coffees"
 end
