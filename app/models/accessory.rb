@@ -42,7 +42,13 @@ class Accessory < ApplicationRecord
 
   def ensure_single_default
     if self.default
+      # Unset default for accessories of the same type
       Accessory.where(user_id: self.user_id, accessory_type: self.accessory_type, default: true).where.not(id: self.id).update_all(default: false)
+
+      # Unset default for other brewing methods
+      if BREWING_METHODS.include?(self.accessory_type)
+        Accessory.where(user_id: self.user_id, accessory_type: BREWING_METHODS, default: true).where.not(id: self.id).update_all(default: false)
+      end
     end
   end
 end
