@@ -1,4 +1,14 @@
 # db/seeds.rb
+require 'csv'
+
+puts "Destroying all previous accessories"
+Accessory.destroy_all
+
+puts "Destroying all previous varieties"
+Variety.destroy_all
+
+puts "Destroying all previous flavors"
+Flavor.destroy_all
 
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
@@ -13,9 +23,6 @@ else
   admin_user = User.find_by(email: 'admin@example.com')
   puts "Admin user already exists with EMAIL: admin@example.com and PASSWORD: password"
 end
-
-puts "Destroying all previous flavors"
-Flavor.destroy_all
 
 puts "Creating all flavors"
 flavors = [
@@ -122,8 +129,21 @@ end
 
 puts "Flavors created"
 
-puts "Destroying all previous accessories"
-Accessory.destroy_all
+puts "Creating Coffee Varieties"
+
+CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
+  varieties.each do |variety|
+    Variety.create!(
+      name: variety['name'],
+      species: variety['species'],
+      subname: variety['subname'],
+      url: variety['url'],
+      description: variety['description']
+    )
+  end
+end
+
+puts "Coffee Varieties created"
 
 puts "Creating accessories for admin user"
 
@@ -148,4 +168,5 @@ accessories.each do |accessory|
 end
 
 puts "Accessories created"
+
 puts "Creating Seeds Completed"
