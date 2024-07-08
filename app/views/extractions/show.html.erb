@@ -1,0 +1,22 @@
+<p>
+  <strong>Brewing Method:</strong>
+  <%= @extraction.brewing_method %>
+</p>
+
+<p>
+  <strong>Coffee:</strong>
+  <%= @extraction.coffee.name if @extraction.coffee %>
+</p>
+
+<p>
+  <strong>Weight In:</strong>
+  <%= @extraction.weight_in %>
+</p>
+
+<p>
+  <strong>Weight Out:</strong>
+  <%= @extraction.weight_out %>
+</p>
+
+<%= link_to 'Edit', edit_extraction_path(@extraction) %> |
+<%= link_to 'Back', extractions_path %>

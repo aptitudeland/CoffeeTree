@@ -1,33 +1,78 @@
-<h1>Accessories</h1>
+<div class="container mt-5">
+  <h1>Dashboard</h1>
 
-<%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
+  <!-- Extractions Section -->
+  <div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2>Recent Extractions</h2>
+      <div>
+        <%= link_to 'New Extraction', new_extraction_path, class: 'btn btn-primary mx-1' %>
+        <%= link_to 'View All Extractions', extractions_path, class: 'btn btn-secondary mx-1' %>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if @extractions.present? %>
+        <ul class="list-group">
+          <% @extractions.each do |extraction| %>
+            <li class="list-group-item">
+              <strong>Method:</strong> <%= extraction.brewing_method %> |
+              <strong>Date:</strong> <%= l(extraction.created_at, format: :short) %>
+              <p><%= extraction.comment %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No extractions found.</p>
+      <% end %>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Default</th>
-      <th>Comments</th>
-      <th>Grinder Min</th>
-      <th>Grinder Max</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <!-- User Coffees Section -->
+  <div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2>Recent Coffees</h2>
+      <div>
+        <%= link_to 'New Coffee', new_user_coffee_path, class: 'btn btn-primary mx-1' %>
+        <%= link_to 'View All Coffees', user_coffees_path, class: 'btn btn-secondary mx-1' %>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if @user_coffees.present? %>
+        <ul class="list-group">
+          <% @user_coffees.each do |coffee| %>
+            <li class="list-group-item">
+              <strong>Name:</strong> <%= coffee.coffee.name %> |
+              <strong>Weight Left:</strong> <%= coffee.weight_left %>g
+              <p><%= coffee.personal_notes %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No coffees found.</p>
+      <% end %>
+    </div>
+  </div>
 
-  <tbody>
-    <% @accessories.each do |accessory| %>
-      <tr>
-        <td><%= accessory.accessory_type %></td>
-        <td><%= accessory.name %></td>
-        <td><%= accessory.default %></td>
-        <td><%= accessory.comments %></td>
-        <td><%= accessory.grinder_min %></td>
-        <td><%= accessory.grinder_max %></td>
-        <td><%= link_to 'Show', accessory %></td>
-        <td><%= link_to 'Edit', edit_accessory_path(accessory) %></td>
-        <td><%= link_to 'Destroy', accessory, method: :delete, data: { confirm: 'Are you sure you want to destroy this accessory?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!-- Default Accessories Section -->
+  <div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2>Default Accessories</h2>
+      <div>
+        <%= link_to 'View All Accessories', accessories_path, class: 'btn btn-secondary mx-1' %>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if @default_accessories.present? %>
+        <ul class="list-group">
+          <% @default_accessories.each do |accessory| %>
+            <li class="list-group-item">
+              <%= accessory.accessory_type %> | <%= accessory.name %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No default accessories found.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

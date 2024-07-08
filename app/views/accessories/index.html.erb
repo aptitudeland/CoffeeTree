@@ -1,16 +1,13 @@
-<h1>Accessories</h1>
+<h1>My Accessories</h1>
 
 <%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Type</th>
       <th>Name</th>
+      <th>Type</th>
       <th>Default</th>
-      <th>Comments</th>
-      <th>Grinder Min</th>
-      <th>Grinder Max</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,15 +15,35 @@
   <tbody>
     <% @accessories.each do |accessory| %>
       <tr>
-        <td><%= accessory.accessory_type %></td>
         <td><%= accessory.name %></td>
-        <td><%= accessory.default %></td>
-        <td><%= accessory.comments %></td>
-        <td><%= accessory.grinder_min %></td>
-        <td><%= accessory.grinder_max %></td>
-        <td><%= link_to 'Show', accessory %></td>
-        <td><%= link_to 'Edit', edit_accessory_path(accessory) %></td>
-        <td><%= link_to 'Destroy', accessory, method: :delete, data: { confirm: 'Are you sure you want to destroy this accessory?' } %></td>
+        <td><%= accessory.accessory_type %></td>
+        <td>
+          <% if accessory.default %>
+            <% brewing_methods = [
+              'Aero press',
+              'Cold brew',
+              'Drip coffee',
+              'Espresso',
+              'French press',
+              'Moka Pot',
+              'Pour-Over',
+              'Siphon coffee',
+              'Turkish coffee',
+              'Vietnamese Phin'
+            ] %>
+            <% if brewing_methods.include?(accessory.accessory_type) %>
+              <%= "Brewing method by default" %>
+            <% else %>
+              <%= "#{accessory.accessory_type} by default" %>
+            <% end %>
+          <% end %>
+        <td><%= link_to 'Show', accessory, class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Edit', edit_accessory_path(accessory), class: 'btn btn-warning' %></td>
+        <td>
+          <%= form_with model: accessory, url: accessory_path(accessory), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'd-inline' do %>
+          <%= submit_tag 'Destroy', class: 'btn btn-danger' %>
+         <% end %>
+    </td>
       </tr>
     <% end %>
   </tbody>
