@@ -1,0 +1,2 @@
+class UserCoffeesController < ApplicationController
+end

@@ -1,0 +1,33 @@
+<h1>Accessories</h1>
+
+<%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Comments</th>
+      <th>Grinder Min</th>
+      <th>Grinder Max</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accessories.each do |accessory| %>
+      <tr>
+        <td><%= accessory.accessory_type %></td>
+        <td><%= accessory.name %></td>
+        <td><%= accessory.default %></td>
+        <td><%= accessory.comments %></td>
+        <td><%= accessory.grinder_min %></td>
+        <td><%= accessory.grinder_max %></td>
+        <td><%= link_to 'Show', accessory %></td>
+        <td><%= link_to 'Edit', edit_accessory_path(accessory) %></td>
+        <td><%= link_to 'Destroy', accessory, method: :delete, data: { confirm: 'Are you sure you want to destroy this accessory?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

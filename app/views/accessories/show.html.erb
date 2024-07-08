@@ -1,0 +1,32 @@
+<p>
+  <strong>Type:</strong>
+  <%= @accessory.accessory_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @accessory.name %>
+</p>
+
+<p>
+  <strong>Default:</strong>
+  <%= @accessory.default %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @accessory.comments %>
+</p>
+
+<p>
+  <strong>Grinder Min:</strong>
+  <%= @accessory.grinder_min %>
+</p>
+
+<p>
+  <strong>Grinder Max:</strong>
+  <%= @accessory.grinder_max %>
+</p>
+
+<%= link_to 'Edit', edit_accessory_path(@accessory) %> |
+<%= link_to 'Back', accessories_path %>

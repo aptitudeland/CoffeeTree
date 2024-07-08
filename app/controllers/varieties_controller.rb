@@ -1,0 +1,2 @@
+class VarietiesController < ApplicationController
+end
