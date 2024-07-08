@@ -1,4 +1,5 @@
 # db/seeds.rb
+require 'csv'
 
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
@@ -120,3 +121,11 @@ flavors.each do |flavor|
 end
 
 puts "Flavors created"
+
+puts "Creating Coffee Varieties"
+
+CSV.open("coffee_varieties.csv", "rb") do |row|
+  puts row
+end
+
+puts "Coffee Varieties created"
