@@ -124,8 +124,16 @@ puts "Flavors created"
 
 puts "Creating Coffee Varieties"
 
-CSV.open("coffee_varieties.csv", "rb") do |row|
-  puts row
+CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
+  varieties.each do |variety|
+    Variety.create!(
+      name: variety['name'],
+      species: variety['species'],
+      subname: variety['subname'],
+      url: variety['url'],
+      description: variety['description']
+    )
+  end
 end
 
 puts "Coffee Varieties created"
