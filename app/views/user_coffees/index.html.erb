@@ -1,0 +1,6 @@
+<% @user_coffees.each do |user_coffee| %>
+  <span><%= user_coffee.coffee.name %></span>
+  <span><%= user_coffee.coffee.roasting_date %></span>
+  <span><%= user_coffee.weight_left %></span>
+  <span><%= user_coffee.price %></span>
+<% end %>
