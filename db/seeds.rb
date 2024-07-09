@@ -10,6 +10,9 @@ Variety.destroy_all
 puts "Destroying all previous flavors"
 Flavor.destroy_all
 
+puts "Destroying all previous coffees"
+Coffee.destroy_all
+
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
   admin_user = User.create!(
@@ -196,5 +199,24 @@ accessories.each do |accessory|
 end
 
 puts "Accessories created"
+
+puts "Creating coffees"
+
+coffees = [
+  {
+    name: "Alejandro Marin / BR300",
+    roaster: "Kultivar",
+    roasting_date: "2024-02-05",
+    process: "Naturel Anaérobie",
+    country: "Colombie",
+    region: "Finca Patio Bonito, Salento, Qunidlo",
+    altitude: 1650,
+  }
+]
+
+cof = Coffee.new(coffees[0])
+cof.varieties.push(Variety.find_by(name: 'Bourbon'))
+cof.save!
+puts "Coffees created"
 
 puts "Creating Seeds Completed"
