@@ -36,9 +36,7 @@ class AccessoriesController < ApplicationController
   end
 
   def destroy
-    accessory_type = @accessory.accessory_type
     @accessory.destroy
-    set_new_default(accessory_type)
     redirect_to accessories_url, notice: 'Accessory was successfully destroyed.'
   end
 
@@ -53,13 +51,6 @@ class AccessoriesController < ApplicationController
   end
 
   def accessory_params
-    params.require(:accessory).permit(:name, :accessory_type, :default, :comments, :grinder_min, :grinder_max, :image_path)
-  end
-
-  def set_new_default(accessory_type)
-    first_accessory = current_user.accessories.where(accessory_type: accessory_type).first
-    if first_accessory
-      first_accessory.update(default: true)
-    end
+    params.require(:accessory).permit(:name, :accessory_type, :comments, :grinder_min, :grinder_max, :image_path)
   end
 end
