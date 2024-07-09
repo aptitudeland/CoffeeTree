@@ -35,6 +35,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_091802) do
     t.index ["accessory_id", "extraction_id"], name: "idx_on_accessory_id_extraction_id_2fe00e4fe3", unique: true
     t.index ["accessory_id"], name: "index_accessories_extractions_on_accessory_id"
     t.index ["extraction_id"], name: "index_accessories_extractions_on_extraction_id"
+
+  create_table "coffee_varieties", force: :cascade do |t|
+    t.bigint "coffee_id", null: false
+    t.bigint "variety_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_coffee_varieties_on_coffee_id"
+    t.index ["variety_id"], name: "index_coffee_varieties_on_variety_id"
   end
 
   create_table "coffees", force: :cascade do |t|
@@ -129,15 +137,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_091802) do
 
   create_table "varieties", force: :cascade do |t|
     t.string "name"
-    t.bigint "coffee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coffee_id"], name: "index_varieties_on_coffee_id"
+    t.string "species"
+    t.string "url"
+    t.text "description"
+    t.string "subname"
   end
 
   add_foreign_key "accessories", "users"
   add_foreign_key "accessories_extractions", "accessories"
   add_foreign_key "accessories_extractions", "extractions"
+  add_foreign_key "coffee_varieties", "coffees"
+  add_foreign_key "coffee_varieties", "varieties"
   add_foreign_key "extractions", "accessories"
   add_foreign_key "extractions", "coffees"
   add_foreign_key "extractions", "user_coffees"
@@ -147,5 +159,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_091802) do
   add_foreign_key "tastings", "users"
   add_foreign_key "user_coffees", "coffees"
   add_foreign_key "user_coffees", "users"
-  add_foreign_key "varieties", "coffees"
 end

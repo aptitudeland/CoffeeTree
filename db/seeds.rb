@@ -1,4 +1,5 @@
 # db/seeds.rb
+require 'csv'
 
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
@@ -148,4 +149,21 @@ accessories.each do |accessory|
 end
 
 puts "Accessories created"
+
+puts "Creating Coffee Varieties"
+
+CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
+  varieties.each do |variety|
+    Variety.create!(
+      name: variety['name'],
+      species: variety['species'],
+      subname: variety['subname'],
+      url: variety['url'],
+      description: variety['description']
+    )
+  end
+end
+
+puts "Coffee Varieties created"
+
 puts "Creating Seeds Completed"

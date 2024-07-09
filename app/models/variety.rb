@@ -1,3 +1,4 @@
 class Variety < ApplicationRecord
-  belongs_to :coffee
+  has_many :coffee_varieties
+  has_many :coffees, through: :coffee_varieties
 end
