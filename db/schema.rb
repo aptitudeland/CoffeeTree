@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_091802) do
     t.index ["accessory_id", "extraction_id"], name: "idx_on_accessory_id_extraction_id_2fe00e4fe3", unique: true
     t.index ["accessory_id"], name: "index_accessories_extractions_on_accessory_id"
     t.index ["extraction_id"], name: "index_accessories_extractions_on_extraction_id"
+  end
 
   create_table "coffee_varieties", force: :cascade do |t|
     t.bigint "coffee_id", null: false
