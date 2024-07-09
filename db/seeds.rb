@@ -5,7 +5,6 @@ puts "Destroying all user_coffees and coffee_varieties"
 CoffeeVariety.destroy_all
 UserCoffee.destroy_all
 
-
 puts "Destroying all previous accessories"
 Accessory.destroy_all
 
