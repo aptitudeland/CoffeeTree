@@ -1,4 +1,4 @@
-.navbar-coffeetree {
+.navbar-top {
   display: flex;
   flex-direction:row;
   justify-content: space-between;
@@ -9,13 +9,26 @@
   font-size: x-large;
   padding-left: 1em;
   padding-right: 1em;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  a{
+    color: #d2b48c;
+  }
 
   a:visited {
     color: #d2b48c;
   }
+
+  a:hover {
+    color: #d2b48c;
+  }
 }
 
-.Navbar-app-name {
+.navbar-app-name {
   font-family: "Playwrite HR Lijeva", cursive;
   font-optical-sizing: auto;
   font-style: normal;
@@ -39,3 +52,75 @@
   background-color: #4b3621;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
+
+.navbar-bottom {
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+  background: #4b3621;
+  color: #d2b48c;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 10px;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+
+
+  .nav-link {
+    text-align: center;
+    // flex: 1;
+    color: #d2b48c;
+    text-decoration: none;
+
+    i {
+      display: block;
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.new-extraction-container {
+display: flex;
+padding: 0px;
+flex-direction: column;
+flex-wrap: nowrap;
+
+
+p{
+    color: #d2b48c;
+  }
+
+  p:visited {
+    color: #d2b48c;
+  }
+
+  p:hover {
+    color: #d2b48c;
+  }
+}
+
+  .new-extraction-btn {
+    color: #4b3621;
+    border-radius: 50%;
+    position: relative;
+    top: -20px;
+    background-color: #d2b48c;
+    font-size: 3rem;
+    display: flex;
+    padding: 0px;
+    height: 1em;
+    width: 1em;
+    border: 2px solid #4b3621;
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+  }

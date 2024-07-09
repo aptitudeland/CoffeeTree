@@ -1,4 +1,4 @@
-<div class="navbar navbar-coffeetree">
+<div class="navbar-top">
   <div>
     <% if user_signed_in? %>
       <%= link_to pages_dashboard_path, class: "nav-link" do %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <div><h4 class="Navbar-app-name">Coffee Tree</h4></div>
+  <div><h4 class="navbar-app-name">Coffee Tree</h4></div>
 
   <div>
     <% if user_signed_in? %>
@@ -22,4 +22,31 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div class="navbar-bottom">
+  <%= link_to accessories_path, class: "nav-link" do %>
+    <i class="fa-solid fa-wrench"></i>
+    <p>Accessories</p>
+  <% end %>
+  <%= link_to user_coffees_path, class: "nav-link" do %>
+    <i class="fa-solid fa-coffee"></i>
+    <p>Coffees</p>
+  <% end %>
+<div>
+  <%= link_to new_extraction_path, class: "nav-link new-extraction-container" do %>
+    <div class= "new-extraction-btn">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+    <p>New<br>Extraction</p>
+  <% end %>
+</div>
+  <%= link_to extractions_path, class: "nav-link" do %>
+    <i class="fa-solid fa-filter"></i>
+    <p>Extractions</p>
+  <% end %>
+  <%= link_to pages_dashboard_path, class: "nav-link" do %>
+    <i class="fa-solid fa-house"></i>
+    <p>Dashboard</p>
+  <% end %>
 </div>
