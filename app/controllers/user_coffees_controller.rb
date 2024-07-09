@@ -9,8 +9,9 @@ class UserCoffeesController < ApplicationController
   end
 
   def create
-    @user_coffee = UserCoffee.new(user_coffee_params)
+    @user_coffee = UserCoffee.create(user_coffee_params)
     @user_coffee.user = current_user
+    @user_coffee.coffee = Coffee.create(coffee_params) unless @user_coffee.coffee_id
 
     if @user_coffee.save
       redirect_to user_coffees_path
@@ -22,6 +23,10 @@ class UserCoffeesController < ApplicationController
   private
 
   def user_coffee_params
-    params.require(:user_coffee).permit(:bag_weight, :coffee_id, :weight_left, :price)
+    params.require(:user_coffee).permit(:bag_weight, :weight_left, :price, :coffee_id)
+  end
+
+  def coffee_params
+    params.require(:coffee).permit(:name, :roaster, :roasting_date, :process, :country, :region, :altitude)
   end
 end
