@@ -202,20 +202,30 @@ puts "Accessories created"
 
 puts "Creating coffees"
 
-coffees = [
-  {
-    name: "Alejandro Marin / BR300",
-    roaster: "Kultivar",
-    roasting_date: "2024-02-05",
-    process: "Naturel Anaérobie",
-    country: "Colombie",
-    region: "Finca Patio Bonito, Salento, Qunidlo",
-    altitude: 1650,
-  }
-]
-
-cof = Coffee.new(coffees[0])
+cof = Coffee.new(
+  name: "Alejandro Marin / BR300",
+  roaster: "Shouka",
+  roasting_date: "2024-02-05",
+  process: "Naturel Anaérobie",
+  country: "Colombie",
+  region: "Finca Patio Bonito, Salento, Qunidlo",
+  altitude: 1650
+)
 cof.varieties.push(Variety.find_by(name: 'Bourbon'))
+cof.save!
+
+cof = Coffee.new(
+  name: "Farms Yungas",
+  roaster: "Kultivar",
+  roasting_date: "2023-09-06",
+  process: "Lavée",
+  country: "Bolivie",
+  region: "La Paz",
+  altitude: 1660
+)
+cof.varieties.push(Variety.find_by(name: 'Caturra'))
+cof.varieties.push(Variety.find_by(name: 'Typica'))
+cof.varieties.push(Variety.find_by(name: 'Catuai'))
 cof.save!
 puts "Coffees created"
 

@@ -3,7 +3,7 @@ class Coffee < ApplicationRecord
 
   before_validation :set_altitude
 
-  has_many :coffee_varieties
+  has_many :coffee_varieties, dependent: :destroy
   has_many :varieties, through: :coffee_varieties
   has_many :user_coffees
   has_many :users, through: :user_coffees
@@ -12,10 +12,9 @@ class Coffee < ApplicationRecord
   private
 
   def set_altitude
-    puts self
-    if self.attributes['altitude'].not.nil?
-      self.attributes['altitude_low'] = self.attributes['altitude']
-      self.attributes['altitude_high'] = self.attributes['altitude']
+    unless altitude.nil?
+      self.altitude_low = altitude
+      self.altitude_high = altitude
     end
   end
 end
