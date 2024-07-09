@@ -1,0 +1,9 @@
+<%= f.simple_fields_for coffee do |ff| %>
+  <%= ff.input :name %>
+  <%= ff.input :roaster %>
+  <%= ff.input :roasting_date %>
+  <%= ff.input :process %>
+  <%= ff.input :region %>
+  <%= ff.input :altitude %>
+  <%= ff.association :varieties %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for @user_coffee do |f| %>
+  <%= f.association :coffee, prompt: 'Add a new coffee' %>
+  <%= render "coffees/new", f: f, coffee: @coffee %>
+  <%= f.input :bag_weight %>
+  <%= f.input :weight_left%>
+  <%= f.input :price, placeholder: '0'%>
+  <%= f.submit %>
+<% end %>

@@ -1,6 +1,5 @@
 class Coffee < ApplicationRecord
   attr_accessor :altitude
-
   before_validation :set_altitude
 
   has_many :coffee_varieties, dependent: :destroy
@@ -8,6 +7,8 @@ class Coffee < ApplicationRecord
   has_many :user_coffees
   has_many :users, through: :user_coffees
   has_many :extractions
+
+  validates :name, presence: true, uniqueness: true
 
   private
 
