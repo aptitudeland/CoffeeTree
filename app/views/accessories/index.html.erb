@@ -7,7 +7,6 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Default</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,26 +16,6 @@
       <tr>
         <td><%= accessory.name %></td>
         <td><%= accessory.accessory_type %></td>
-        <td>
-          <% if accessory.default %>
-            <% brewing_methods = [
-              'Aero press',
-              'Cold brew',
-              'Drip coffee',
-              'Espresso',
-              'French press',
-              'Moka Pot',
-              'Pour-Over',
-              'Siphon coffee',
-              'Turkish coffee',
-              'Vietnamese Phin'
-            ] %>
-            <% if brewing_methods.include?(accessory.accessory_type) %>
-              <%= "Brewing method by default" %>
-            <% else %>
-              <%= "#{accessory.accessory_type} by default" %>
-            <% end %>
-          <% end %>
         <td><%= link_to 'Show', accessory, class: 'btn btn-secondary' %></td>
         <td><%= link_to 'Edit', edit_accessory_path(accessory), class: 'btn btn-warning' %></td>
         <td>

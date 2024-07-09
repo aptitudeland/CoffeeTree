@@ -175,7 +175,6 @@ end
 
 puts "Coffee Varieties created"
 
-
 puts "Creating accessories for admin user"
 
 accessories = [

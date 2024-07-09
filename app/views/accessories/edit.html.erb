@@ -14,10 +14,6 @@
           <%= form.label :accessory_type, "Type" %>
           <%= form.text_field :accessory_type, class: 'form-control', readonly: true %>
         </div>
-        <div class="form-group form-check">
-          <%= form.check_box :default, class: 'form-check-input' %>
-          <%= form.label :default, class: 'form-check-label' %>
-        </div>
         <% if @accessory.accessory_type == 'Grinder' %>
           <div class="form-group">
             <%= form.label :grinder_min %>
