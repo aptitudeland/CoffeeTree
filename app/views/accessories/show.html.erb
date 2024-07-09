@@ -1,32 +1,26 @@
-<p>
-  <strong>Type:</strong>
-  <%= @accessory.accessory_type %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @accessory.name %>
-</p>
-
-<p>
-  <strong>Default:</strong>
-  <%= @accessory.default %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= @accessory.comments %>
-</p>
-
-<p>
-  <strong>Grinder Min:</strong>
-  <%= @accessory.grinder_min %>
-</p>
-
-<p>
-  <strong>Grinder Max:</strong>
-  <%= @accessory.grinder_max %>
-</p>
-
-<%= link_to 'Edit', edit_accessory_path(@accessory) %> |
-<%= link_to 'Back', accessories_path %>
+<div class="container mt-5 accessory-show-page">
+  <div class="card">
+    <div class="card-header">
+      <h1><%= @accessory.name %></h1>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Details</h5>
+      <p class="card-text"><strong>Type:</strong> <%= @accessory.accessory_type %></p>
+      <p class="card-text"><strong>Default:</strong> <%= @accessory.default ? "Yes" : "No" %></p>
+      <% if @accessory.accessory_type == 'Grinder' %>
+        <p class="card-text"><strong>Grinder Min:</strong> <%= @accessory.grinder_min %></p>
+        <p class="card-text"><strong>Grinder Max:</strong> <%= @accessory.grinder_max %></p>
+      <% end %>
+      <p class="card-text"><strong>Comments:</strong> <%= @accessory.comments %></p>
+      <p class="card-text"><strong>Created At:</strong> <%= l(@accessory.created_at, format: :long) %></p>
+      <p class="card-text"><strong>Updated At:</strong> <%= l(@accessory.updated_at, format: :long) %></p>
+    </div>
+    <div class="card-footer text-muted">
+      <%= link_to 'Edit', edit_accessory_path(@accessory), class: 'btn btn-primary' %>
+      <%= link_to 'Back', accessories_path, class: 'btn btn-secondary' %>
+      <%= form_with model: @accessory, url: accessory_path(@accessory), method: :delete, data: { confirm: 'Are you sure?' }, class: 'd-inline' do %>
+        <%= submit_tag 'Delete', class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,51 +1,5 @@
 <h1>New Accessory</h1>
 
-<%= form_with(model: @accessory, local: true) do |form| %>
-  <% if @accessory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@accessory.errors.count, "error") %> prohibited this accessory from being saved:</h2>
+<%= render 'form', accessory: @accessory %>
 
-      <ul>
-        <% @accessory.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :accessory_type %>
-    <%= form.select :accessory_type, Accessory::ACCESSORY_TYPES.map { |type| [type, type] }, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :default %>
-    <%= form.check_box :default %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grinder_min %>
-    <%= form.number_field :grinder_min %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grinder_max %>
-    <%= form.number_field :grinder_max %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', accessories_path %>
+<%= link_to 'Back', accessories_path, class: 'btn btn-secondary' %>

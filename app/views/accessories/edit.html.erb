@@ -1,51 +1,42 @@
-<h1>Edit Accessory</h1>
-
-<%= form_with(model: @accessory, local: true) do |form| %>
-  <% if @accessory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@accessory.errors.count, "error") %> prohibited this accessory from being saved:</h2>
-
-      <ul>
-        <% @accessory.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="container mt-5 accessory-show-page">
+  <div class="card">
+    <div class="card-header">
+      <h1>Edit <%= @accessory.name %></h1>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :accessory_type %>
-    <%= form.text_field :accessory_type %>
+    <div class="card-body">
+      <h5 class="card-title">Details</h5>
+      <%= form_with model: @accessory, local: true do |form| %>
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.label :accessory_type, "Type" %>
+          <%= form.text_field :accessory_type, class: 'form-control', readonly: true %>
+        </div>
+        <div class="form-group form-check">
+          <%= form.check_box :default, class: 'form-check-input' %>
+          <%= form.label :default, class: 'form-check-label' %>
+        </div>
+        <% if @accessory.accessory_type == 'Grinder' %>
+          <div class="form-group">
+            <%= form.label :grinder_min %>
+            <%= form.number_field :grinder_min, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :grinder_max %>
+            <%= form.number_field :grinder_max, class: 'form-control' %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= form.label :comments %>
+          <%= form.text_area :comments, class: 'form-control' %>
+        </div>
+        <div class="form-actions">
+          <%= form.submit 'Save', class: 'btn btn-success' %>
+          <%= link_to 'Cancel', @accessory, class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :default %>
-    <%= form.check_box :default %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grinder_min %>
-    <%= form.number_field :grinder_min %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grinder_max %>
-    <%= form.number_field :grinder_max %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Update Accessory" %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', accessories_path %>
+</div>

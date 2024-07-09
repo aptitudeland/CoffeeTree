@@ -1,0 +1,75 @@
+<%= form_with(model: accessory, local: true, html: { class: 'accessory-form' }) do |form| %>
+  <% if accessory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(accessory.errors.count, "error") %> prohibited this accessory from being saved:</h2>
+      <ul>
+        <% accessory.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :accessory_type, "Select Accessory Type" %>
+
+    <div class="accessory-section">
+      <div class="accessory-section-title">Brewing Methods / Machines</div>
+      <div id="brewing_methods" class="accessory-options-container">
+        <% Accessory::BREWING_METHODS.each do |type| %>
+          <div class="accessory-option" data-type="<%= type %>">
+            <img src="<%= asset_path(Accessory.image_path(type)) %>" alt="<%= type %>" class="accessory-image" />
+            <div class="accessory-option-label"><%= type %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="accessory-section">
+      <div class="accessory-section-title">Other Accessories</div>
+      <div id="other_accessories" class="accessory-options-container">
+        <% (Accessory::ACCESSORY_TYPES - Accessory::BREWING_METHODS).each do |type| %>
+          <div class="accessory-option" data-type="<%= type %>">
+            <img src="<%= asset_path(Accessory.image_path(type)) %>" alt="<%= type %>" class="accessory-image" />
+            <div class="accessory-option-label"><%= type %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= form.hidden_field :accessory_type, id: "accessory_type_select" %>
+
+  <div id="accessory_details" style="display: none;">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: "accessory_name" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :default %>
+      <%= form.check_box :default %>
+    </div>
+
+    <div class="field">
+      <%= form.label :comments %>
+      <%= form.text_area :comments %>
+    </div>
+
+    <div id="grinder_fields" class="field">
+      <div class="field">
+        <%= form.label :grinder_min %>
+        <%= form.number_field :grinder_min, id: "accessory_grinder_min" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :grinder_max %>
+        <%= form.number_field :grinder_max, id: "accessory_grinder_max" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>

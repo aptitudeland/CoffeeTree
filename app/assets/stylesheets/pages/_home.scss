@@ -1,1 +1,11 @@
-// Specific CSS for your home-page
+.home-welcome-message {
+  text-align: center;
+  margin-top: 50px;
+}
+.home-buttons-container {
+  margin-top: 20px;
+
+  .btn {
+    margin: 0 10px;
+  }
+}

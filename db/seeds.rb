@@ -3,7 +3,7 @@ require 'csv'
 
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
-  User.create!(
+  admin_user = User.create!(
     email: 'admin@example.com',
     password: 'password',
     password_confirmation: 'password',
@@ -11,6 +11,7 @@ unless User.exists?(email: 'admin@example.com')
   )
   puts "Admin user created with EMAIL: admin@example.com and PASSWORD: password"
 else
+  admin_user = User.find_by(email: 'admin@example.com')
   puts "Admin user already exists with EMAIL: admin@example.com and PASSWORD: password"
 end
 
@@ -122,6 +123,33 @@ end
 
 puts "Flavors created"
 
+puts "Destroying all previous accessories"
+Accessory.destroy_all
+
+puts "Creating accessories for admin user"
+
+accessories = [
+  { name: 'Santos', accessory_type: 'Grinder', grinder_min: 0, grinder_max: 30, user: admin_user },
+  { name: 'Sage Integrated Grinder', accessory_type: 'Grinder', default: true, grinder_min: 0, grinder_max: 30, user: admin_user },
+  { name: 'Sage Express Impress', accessory_type: 'Espresso', default: true, user: admin_user },
+  { name: 'My Drip Coffee Maker', accessory_type: 'Drip coffee', user: admin_user },
+  { name: 'Origamy Cone', accessory_type: 'Pour-Over', user: admin_user },
+  { name: 'Melita Brown Filter', accessory_type: 'Filter', user: admin_user },
+  { name: 'Sage Integrated Tamper', accessory_type: 'Tamper', default: true, user: admin_user },
+  { name: 'My Tamper', accessory_type: 'Tamper', user: admin_user },
+  { name: 'My Sage DOUBLE Basket', accessory_type: 'Basket', default: true, user: admin_user },
+  { name: 'My Sage SIMPLE Basket', accessory_type: 'Basket', user: admin_user },
+  { name: 'My Repartitor', accessory_type: 'Distribution Tool', user: admin_user },
+  { name: 'My WDT', accessory_type: 'Distribution Tool', user: admin_user },
+  { name: 'My Basic Kettle', accessory_type: 'Kettle', user: admin_user }
+]
+
+accessories.each do |accessory|
+  Accessory.create!(accessory)
+end
+
+puts "Accessories created"
+
 puts "Creating Coffee Varieties"
 
 CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
@@ -137,3 +165,5 @@ CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
 end
 
 puts "Coffee Varieties created"
+
+puts "Creating Seeds Completed"

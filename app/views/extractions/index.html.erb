@@ -1,0 +1,29 @@
+<h1>My Extractions</h1>
+
+<%= link_to 'New Extraction', new_extraction_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brewing Method</th>
+      <th>Coffee</th>
+      <th>Weight In</th>
+      <th>Weight Out</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @extractions.each do |extraction| %>
+      <tr>
+        <td><%= extraction.brewing_method %></td>
+        <td><%= extraction.coffee.name if extraction.coffee %></td>
+        <td><%= extraction.weight_in %></td>
+        <td><%= extraction.weight_out %></td>
+        <td><%= link_to 'Show', extraction %></td>
+        <td><%= link_to 'Edit', edit_extraction_path(extraction) %></td>
+        <td><%= link_to 'Destroy', extraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

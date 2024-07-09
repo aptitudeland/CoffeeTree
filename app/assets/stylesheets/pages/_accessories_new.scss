@@ -1,0 +1,68 @@
+.accessory-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.accessory-section {
+  margin-bottom: 40px;
+}
+
+.accessory-section-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.accessory-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accessory-option img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+.accessory-option img.selected {
+  border: 2px solid blue;
+}
+
+.accessory-option img:hover {
+  transform: scale(1.1);
+}
+
+.accessory-option-label {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.accessory-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accessory-form .field {
+  margin-bottom: 20px;
+}
+
+.accessory-form .actions {
+  text-align: center;
+}
+
+#grinder_fields {
+  display: none;
+}
+
+#grinder_fields.active {
+  display: block;
+}

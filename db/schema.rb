@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_08_162017) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_08_091802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_162017) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accessories_on_user_id"
   end
+
+  create_table "accessories_extractions", id: false, force: :cascade do |t|
+    t.bigint "accessory_id", null: false
+    t.bigint "extraction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accessory_id", "extraction_id"], name: "idx_on_accessory_id_extraction_id_2fe00e4fe3", unique: true
+    t.index ["accessory_id"], name: "index_accessories_extractions_on_accessory_id"
+    t.index ["extraction_id"], name: "index_accessories_extractions_on_extraction_id"
 
   create_table "coffee_varieties", force: :cascade do |t|
     t.bigint "coffee_id", null: false
@@ -137,6 +146,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_162017) do
   end
 
   add_foreign_key "accessories", "users"
+  add_foreign_key "accessories_extractions", "accessories"
+  add_foreign_key "accessories_extractions", "extractions"
   add_foreign_key "coffee_varieties", "coffees"
   add_foreign_key "coffee_varieties", "varieties"
   add_foreign_key "extractions", "accessories"
