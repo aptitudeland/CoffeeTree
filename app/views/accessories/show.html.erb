@@ -6,7 +6,6 @@
     <div class="card-body">
       <h5 class="card-title">Details</h5>
       <p class="card-text"><strong>Type:</strong> <%= @accessory.accessory_type %></p>
-      <p class="card-text"><strong>Default:</strong> <%= @accessory.default ? "Yes" : "No" %></p>
       <% if @accessory.accessory_type == 'Grinder' %>
         <p class="card-text"><strong>Grinder Min:</strong> <%= @accessory.grinder_min %></p>
         <p class="card-text"><strong>Grinder Max:</strong> <%= @accessory.grinder_max %></p>

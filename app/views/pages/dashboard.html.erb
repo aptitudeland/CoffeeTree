@@ -53,26 +53,42 @@
     </div>
   </div>
 
-  <!-- Default Accessories Section -->
-  <div class="card mt-4">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h2>Default Accessories</h2>
-      <div>
-        <%= link_to 'View All Accessories', accessories_path, class: 'btn btn-secondary mx-1' %>
-      </div>
+  <!-- Accessories Section -->
+<div class="card mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h2>Accessories</h2>
+    <div>
+      <%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary mx-1' %>
+      <%= link_to 'View All Accessories', accessories_path, class: 'btn btn-secondary mx-1' %>
     </div>
-    <div class="card-body">
-      <% if @default_accessories.present? %>
-        <ul class="list-group">
-          <% @default_accessories.each do |accessory| %>
-            <li class="list-group-item">
-              <%= accessory.accessory_type %> | <%= accessory.name %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No default accessories found.</p>
-      <% end %>
-    </div>
+  </div>
+  <div class="card-body">
+    <!-- Brewing Methods Section -->
+    <h3>Last 3 registered Brewing Methods</h3>
+    <% if @brewing_methods.present? %>
+      <ul class="list-group mb-4">
+        <% @brewing_methods.each do |accessory| %>
+          <li class="list-group-item">
+            <strong><%= accessory.name %></strong> | <%= accessory.accessory_type %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No brewing methods found.</p>
+    <% end %>
+
+    <!-- Other Accessories Section -->
+    <h3>Last 5 Accessories</h3>
+    <% if @other_accessories.present? %>
+      <ul class="list-group">
+        <% @other_accessories.each do |accessory| %>
+          <li class="list-group-item">
+            <strong><%= accessory.name %></strong> | <%= accessory.accessory_type %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No other accessories found.</p>
+    <% end %>
   </div>
 </div>

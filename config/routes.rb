@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get 'home/index', to: 'home#index', as: 'home_index'
+  get 'pages/dashboard', to: 'pages#dashboard', as: 'pages_dashboard'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
