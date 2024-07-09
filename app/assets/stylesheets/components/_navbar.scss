@@ -1,12 +1,41 @@
-.navbar-lewagon {
+.navbar-coffeetree {
+  display: flex;
+  flex-direction:row;
   justify-content: space-between;
-  background: white;
+  align-items: baseline;
+  background: #4b3621;
+  color: #d2b48c;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: x-large;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  a:visited {
+    color: #d2b48c;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.Navbar-app-name {
+  font-family: "Playwrite HR Lijeva", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.navbar-coffeetree .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-coffeetree .dropdown-menu {
+  color: #4b3621;
+  background-color: #d2b48c;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+  a:visited {
+    color: #4b3621;
+  }
+}
+
+.navbar-coffeetree .dropdown-item:hover {
+  color: #d2b48c;
+  background-color: #4b3621;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
