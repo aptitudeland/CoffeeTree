@@ -1,8 +1,8 @@
 <div class="acc-index-main-container">
   <h1>Accessories</h1>
   <div class="acc-index-actions-buttons">
-    <%= link_to 'Back to Dashboard', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
-    <%= link_to 'Add New Accessory', new_accessory_path, class: 'btn btn-primary' %>
+    <%= link_to 'Back', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Add New', new_accessory_path, class: 'btn btn-primary' %>
   </div>
 
   <div class="acc-index-list">
@@ -11,7 +11,7 @@
       <h2>Brewing Methods</h2>
       <% @accessories.select { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
         <div class="acc-index-item" onclick="location.href='<%= edit_accessory_path(accessory) %>'">
-          <%= button_to '×', accessory, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+          <%= button_to '×', accessory, method: :delete, data: { confirm: 'Are you sure?' }, class: 'acc-index-delete-button' %>
           <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, data: { action: "click->accessory#select", accessory_target: "accessoryImage", type: accessory.accessory_type } %>
           <div class="acc-index-item-content">
             <div class="details">
@@ -32,7 +32,7 @@
       <h2>Other Accessories</h2>
       <% @accessories.reject { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
         <div class="acc-index-item" onclick="location.href='<%= edit_accessory_path(accessory) %>'">
-          <%= button_to '×', accessory, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+          <%= button_to '×', accessory, method: :delete, data: { confirm: 'Are you sure?' }, class: 'acc-index-delete-button' %>
           <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, data: { action: "click->accessory#select", accessory_target: "accessoryImage", type: accessory.accessory_type } %>
           <div class="acc-index-item-content">
             <div class="details">

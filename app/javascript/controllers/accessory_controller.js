@@ -67,6 +67,11 @@ export default class extends Controller {
     this.otherButtonTarget.classList.add("selected");
   }
 
+  toggleAccessoryTypeSelection(event) {
+    const accessoryTypeSelection = document.getElementById('accessory-type-selection');
+    accessoryTypeSelection.style.display = accessoryTypeSelection.style.display === 'none' ? 'block' : 'none';
+  }
+
   scrollToBrewingMethods(event) {
     this.brewingMethodsTarget.querySelector("h3").scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

@@ -1,10 +1,11 @@
 <div class="new-acc-main-container">
   <%= form_with(model: @accessory, local: true, data: { controller: "accessory" }) do |form| %>
     <div class="field new-acc-flex-column-center-container">
-      <h3>Edit Accessory</h3>
-      <p>Current accessory type: <%= @accessory.accessory_type %></p>
+      <h3><%= @accessory.name %></h3>
+      <%= image_tag Accessory.image_path(@accessory.accessory_type), alt: @accessory.name, class: 'accessory-image' %>
+      <p>Accessory type: <%= @accessory.accessory_type %></p>
       <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', id: 'change-accessory-type-button', data: { action: "click->accessory#toggleAccessoryTypeSelection" }) do %>
-        Change Accessory Type
+        Edit Accessory
       <% end %>
     </div>
 
@@ -41,8 +42,13 @@
 
     <div class="new-acc-flex-column-center-container">
       <div class="field" data-accessory-target="namefield">
-        <div><%= form.label :name, "Give a name to your accessory" %></div>
+        <div><%= form.label :name, "Name of your accessory" %></div>
         <div><%= form.text_field :name, data: { accessory_target: "name" } %></div>
+      </div>
+
+      <div class="field" data-accessory-target="commentsField">
+        <div><%= form.label :comments, "Comments" %></div>
+        <div><%= form.text_area :comments, data: { accessory_target: "comments" } %></div>
       </div>
 
       <div class="field" data-accessory-target="grinderFields" style="display: <%= @accessory.accessory_type == 'Grinder' ? 'block' : 'none' %>;">
