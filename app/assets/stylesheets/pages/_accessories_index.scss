@@ -5,7 +5,6 @@
   gap: 1rem;
   max-width: 1024px;
   margin: auto;
-  display: block;
 }
 
 .acc-index-actions-buttons {
@@ -24,24 +23,29 @@
   margin-bottom: 2rem;
 }
 
-.acc-index-section h2 {
-  text-align: center;
+.acc-index-section h4 {
+  // text-align: center;
   margin-bottom: 1rem;
+}
+
+.acc-index-item-wrapper {
+  position: relative;
 }
 
 .acc-index-item {
   height: 100px;
   display: flex;
   align-items: center;
-  // padding: 1rem;
   border: 1px solid #ccc;
-  // border-radius: 5px;
   margin-bottom: 1rem;
   width: 100%;
   justify-content: space-between;
-  position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden
+
 }
 
 .acc-index-item:hover {
@@ -50,7 +54,7 @@
 
 .acc-index-item img {
   cursor: pointer;
-  // border-radius: 5px;
+  border-radius: 5px;
   height: 100%;
   width: auto;
   margin-right: 1rem;
@@ -62,41 +66,34 @@
 
 .acc-index-item-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  flex-wrap: nowrap;
   width: 100%;
-}
 
-.acc-index-item .details {
-  flex-grow: 1;
-}
+  h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
 
-.acc-index-item h4 {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.acc-index-item p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
+  p {
+   margin: 0rem ;
+   font-size: 0.9rem;
+  }
 }
 
 .acc-index-delete-button {
   position: absolute;
-  top: -0.5rem;
-  right: 0rem;
+  top: 0rem;
+  right: 0.5rem;
   z-index: 1;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  color: #4b3621;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   background: none;
-  width: 2.5rem;
-  border: transparent;
-  background-color: transparent;
 }
 
-.acc-index-item .delete-button:hover {
+.acc-index-delete-button:hover {
   color: #a00;
 }
 

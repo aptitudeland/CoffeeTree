@@ -1,11 +1,11 @@
 <div class="new-acc-main-container">
-  <%= form_with(model: @accessory, local: true, data: { controller: "accessory" }) do |form| %>
+  <%= simple_form_for(@accessory, data: { controller: "accessory" }) do |f| %>
     <div class="field new-acc-flex-column-center-container">
       <h3><%= @accessory.name %></h3>
-      <%= image_tag Accessory.image_path(@accessory.accessory_type), alt: @accessory.name, class: 'accessory-image' %>
-      <p>Accessory type: <%= @accessory.accessory_type %></p>
+      Accessory Type
       <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', id: 'change-accessory-type-button', data: { action: "click->accessory#toggleAccessoryTypeSelection" }) do %>
-        Edit Accessory
+        <%= image_tag Accessory.image_path(@accessory.accessory_type), alt: @accessory.name, class: 'accessory-image' %>
+        <%= @accessory.accessory_type %>
       <% end %>
     </div>
 
@@ -38,28 +38,25 @@
       </div>
     </div>
 
-    <%= form.hidden_field :accessory_type, id: "accessory_type", data: { accessory_target: "accessoryType" } %>
+    <%= f.hidden_field :accessory_type, id: "accessory_type", data: { accessory_target: "accessoryType" } %>
 
     <div class="new-acc-flex-column-center-container">
       <div class="field" data-accessory-target="namefield">
-        <div><%= form.label :name, "Name of your accessory" %></div>
-        <div><%= form.text_field :name, data: { accessory_target: "name" } %></div>
+        <div><%= f.input :name, label: "Name of your accessory", input_html: { data: { accessory_target: "name" } } %></div>
       </div>
 
       <div class="field" data-accessory-target="commentsField">
-        <div><%= form.label :comments, "Comments" %></div>
-        <div><%= form.text_area :comments, data: { accessory_target: "comments" } %></div>
+        <div><%= f.input :comments, label: "Comments", as: :text, input_html: { data: { accessory_target: "comments" } } %></div>
       </div>
 
       <div class="field" data-accessory-target="grinderFields" style="display: <%= @accessory.accessory_type == 'Grinder' ? 'block' : 'none' %>;">
-        <div><%= form.label :grinder_min, "What is the minimal position?" %></div>
+        <div><%= f.input :grinder_min, label: "What is the minimal position?", input_html: { class: 'form-control prefilled-input', data: { accessory_target: "grinderMinInput" } } %></div>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMin", target: "accessory.grinderMinButton" }) do %>
               <i class="fas fa-minus"></i>
             <% end %>
           </div>
-          <%= form.number_field :grinder_min, value: @accessory.grinder_min, placeholder: '0', class: 'form-control prefilled-input', data: { accessory_target: "grinderMinInput" } %>
           <div class="input-group-append">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#incrementMin", target: "accessory.grinderMinButton" }) do %>
               <i class="fas fa-plus"></i>
@@ -69,14 +66,13 @@
       </div>
 
       <div class="field" data-accessory-target="grinderFields" style="display: <%= @accessory.accessory_type == 'Grinder' ? 'block' : 'none' %>;">
-        <div><%= form.label :grinder_max, "What is the maximal position?" %></div>
+        <div><%= f.input :grinder_max, label: "What is the maximal position?", input_html: { class: 'form-control prefilled-input', data: { accessory_target: "grinderMaxInput" } } %></div>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-minus"></i>
             <% end %>
           </div>
-          <%= form.number_field :grinder_max, value: @accessory.grinder_max, placeholder: '30', class: 'form-control prefilled-input', data: { accessory_target: "grinderMaxInput" } %>
           <div class="input-group-append">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#incrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-plus"></i>
@@ -87,8 +83,11 @@
     </div>
 
     <div class="new-acc-actions-buttons">
-      <%= link_to 'Back to Dashboard', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
-      <%= form.submit class: 'btn btn-primary' %>
+      <%= link_to 'Back', (request.referrer || pages_dashboard_path), class: 'btn btn-outline-secondary' %>
+      <div class="btn btn-warning">
+        <%= link_to 'Delete accessory', accessory_path(@accessory), data: { method: :delete, confirm: "Are you sure?" } %>
+      </div>
+      <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
