@@ -44,6 +44,8 @@ class AccessoriesController < ApplicationController
 
   def set_accessory
     @accessory = Accessory.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to accessories_path, alert: 'Accessory not found.'
   end
 
   def authorize_user!

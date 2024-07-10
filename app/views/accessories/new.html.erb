@@ -34,12 +34,17 @@
 
     <div class="new-acc-flex-column-center-container">
       <div class="field" style="display: none;" data-accessory-target="namefield">
-        <div><%= form.label :name, "Give a name of your new accessory" %></div>
+        <div><%= form.label :name, "Give a name to your new accessory" %></div>
         <div><%= form.text_field :name, data: { accessory_target: "name" } %></div>
       </div>
 
+      <div class="field" style="display: none;" data-accessory-target="commentsField">
+        <div><%= form.label :comments, "Comments" %></div>
+        <div><%= form.text_area :comments, data: { accessory_target: "comments" } %></div>
+      </div>
+
       <div class="field" style="display: none;" data-accessory-target="grinderFields">
-        <div><%= form.label :grinder_min, "What is the minimal position ?" %></div>
+        <div><%= form.label :grinder_min, "What is the minimal position?" %></div>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMin", target: "accessory.grinderMinButton" }) do %>
@@ -56,14 +61,14 @@
       </div>
 
       <div class="field" style="display: none;" data-accessory-target="grinderFields">
-        <div><%= form.label :grinder_max, "What is the maximal position ?" %></div>
+        <div><%= form.label :grinder_max, "What is the maximal position?" %></div>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-minus"></i>
             <% end %>
           </div>
-          <%= form.number_field :grinder_max, value: 30, placeholder: '30', class: 'form-control prefilled-input ', data: { accessory_target: "grinderMaxInput" } %>
+          <%= form.number_field :grinder_max, value: 30, placeholder: '30', class: 'form-control prefilled-input', data: { accessory_target: "grinderMaxInput" } %>
           <div class="input-group-append">
             <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#incrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-plus"></i>
@@ -76,7 +81,6 @@
     <div class="new-acc-actions-buttons">
       <%= link_to 'Back to Dashboard', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
       <%= form.submit class: 'btn btn-primary' %>
-
     </div>
   <% end %>
 </div>

@@ -1,0 +1,102 @@
+.acc-index-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.acc-index-actions-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.acc-index-list {
+  width: 100%;
+}
+
+.acc-index-section {
+  margin-bottom: 2rem;
+}
+
+.acc-index-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.acc-index-item {
+  display: flex;
+  align-items: center;
+  // padding: 1rem;
+  border: 1px solid #ccc;
+  // border-radius: 5px;
+  margin-bottom: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.acc-index-item:hover {
+  background-color: #f9f9f9;
+}
+
+.acc-index-item img {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+}
+
+.acc-index-item img.selected {
+  border-color: #4b3621;
+}
+
+.acc-index-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.acc-index-item .details {
+  flex-grow: 1;
+}
+
+.acc-index-item h4 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.acc-index-item p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.acc-index-item .delete-button {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  z-index: 2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: #4b3621;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: transparent;
+}
+
+.acc-index-item .delete-button:hover {
+  color: #a00;
+}
+
+.btn-outline-secondary, .btn-primary {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}

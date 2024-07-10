@@ -5,7 +5,7 @@ export default class extends Controller {
     "accessoryType", "grinderFields", "accessoryImage",
     "brewingMethods", "otherAccessories", "buttonGroup",
     "name", "brewingButton", "otherButton", "namefield",
-    "grinderMinInput", "grinderMaxInput"
+    "grinderMinInput", "grinderMaxInput", "commentsField"
   ];
 
   connect() {
@@ -31,12 +31,17 @@ export default class extends Controller {
     // Set the name field value
     this.nameTarget.value = `My ${selectedType}`;
     this.toggleGrinderFields();
+
+    // Show the name and comments fields
+    this.namefieldTarget.style.display = 'block';
+    this.commentsFieldTarget.style.display = 'block';
   }
 
   showBrewingMethods(event) {
     this.brewingMethodsTarget.style.display = 'block';
     this.otherAccessoriesTarget.style.display = 'none';
     this.namefieldTarget.style.display = 'block';
+    this.commentsFieldTarget.style.display = 'block';
     this.nameTarget.value = '';
     this.scrollToBrewingMethods(event);
 
@@ -51,6 +56,7 @@ export default class extends Controller {
     this.brewingMethodsTarget.style.display = 'none';
     this.otherAccessoriesTarget.style.display = 'block';
     this.namefieldTarget.style.display = 'block';
+    this.commentsFieldTarget.style.display = 'block';
     this.nameTarget.value = '';
     this.scrollToOtherAccessories(event);
 
