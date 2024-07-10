@@ -10,6 +10,10 @@ class Coffee < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  def coffee_description
+    "#{self.attributes['name']} - #{self.attributes['roaster']} - #{self.attributes['roasting_date']} - #{self.attributes['country']}"
+  end
+
   private
 
   def set_altitude
