@@ -6,6 +6,15 @@ class UserCoffeesController < ApplicationController
   def new
     @user_coffee = current_user.user_coffees.build
     @coffee = @user_coffee.build_coffee
+
+    respond_to do |format|
+      format.html
+      format.json do
+        coffee = Coffee.find_by(name: params[:name])
+        render json: { coffee: coffee }
+      end
+    end
+
   end
 
   def create

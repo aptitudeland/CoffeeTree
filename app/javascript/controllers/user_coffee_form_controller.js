@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['coffeeForm', 'weight']
 
   connect() {
-    console.log(this.weightTarget)
   }
 
   toggleCoffeeFormVisibility(event) {
@@ -16,9 +15,26 @@ export default class extends Controller {
     }
   }
 
+  fetchCoffee(event) {
+    event.preventDefault()
+    const baseUrl = "/user_coffees/new"
+
+    const formData = new FormData(this.element)
+    console.log(formData.get('coffee[name]'))
+
+    const urlParams = new URLSearchParams({
+      name:formData.get("coffee[name]"),
+    });
+    fetch(baseUrl + "?" + urlParams.toString(), {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }
+
   changeWeight(event){
-    console.log('HAHAHHAHAH')
-    console.log(this.weightTarget.value)
     event.preventDefault()
     this.weightTarget.setAttribute(
       "value",
