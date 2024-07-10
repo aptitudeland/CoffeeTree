@@ -1,5 +1,4 @@
-// TOP NAVBAR
-
+/* TOP NAVBAR */
 .navbar-top {
   display: flex;
   flex-direction: row;
@@ -47,9 +46,10 @@
   color: #4b3621;
   background-color: #d2b48c;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
-  a:visited {
-    color: #4b3621;
-  }
+}
+
+.navbar-coffeetree .dropdown-menu a:visited {
+  color: #4b3621;
 }
 
 .navbar-coffeetree .dropdown-item:hover {
@@ -58,8 +58,7 @@
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
 
-// BOTTOM NAVBAR
-
+/* BOTTOM NAVBAR */
 .navbar-bottom {
   position: fixed;
   bottom: 0px;
@@ -68,7 +67,6 @@
   color: #d2b48c;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-evenly;
   padding-top: 5px;
   width: 100%;
@@ -80,7 +78,6 @@
 .navbar-bottom-item {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   text-align: center;
   align-items: center;
   color: #d2b48c;
@@ -101,9 +98,7 @@
 
 .new-extraction-container {
   display: flex;
-  // padding: 4px;
   flex-direction: column-reverse;
-  flex-wrap: nowrap;
   align-items: center;
   height: 200%;
   text-decoration: none;
@@ -119,7 +114,6 @@
   width: 4rem;
   border: 2px solid #4b3621;
   box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
-  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
 
