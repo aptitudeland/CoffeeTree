@@ -1,4 +1,4 @@
-.new-accessory-main-container {
+.new-acc-main-container {
   img {
     cursor: pointer;
     border: 2px solid transparent;
@@ -8,28 +8,29 @@
   img.selected {
     border-color: #4b3621;
   }
+
+  .new-acc-main-button.selected img {
+    border-color: #4b3621;
+  }
+
+  .btn-outline-secondary {
+    z-index: 1;
+  }
+  .form-control {
+    text-align: center;
+  }
 }
 
-.main-selection {
+.new-acc-main-buttons-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-bottom: 1em;
-}
-
-.accessory-selection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 1em;
-}
-
-.button-group {
-  display: flex;
   gap: 10px;
 }
 
-.accessory-button {
+.new-acc-main-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,8 +39,46 @@
   cursor: pointer;
 }
 
-.actions-buttons {
+.new-acc-type-selection {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+
+.new-acc-flex-column-center-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  align-content: center;
+  text-align: center;
+  gap: 1em;
+  // justify-content: center;
+}
+
+.new-acc-flex-row-center-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.new-acc-grinder-fields {
+  width: 150px;
+  margin: auto;
+  width: 50%;
+}
+
+.new-acc-actions-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
   justify-content: space-around;
 }

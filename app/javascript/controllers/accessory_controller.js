@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [
     "accessoryType", "grinderFields", "accessoryImage",
     "brewingMethods", "otherAccessories", "buttonGroup",
-    "name", "brewingButton", "otherButton", "namefield"
+    "name", "brewingButton", "otherButton", "namefield",
+    "grinderMinInput", "grinderMaxInput"
   ];
 
   connect() {
@@ -39,8 +40,10 @@ export default class extends Controller {
     this.nameTarget.value = '';
     this.scrollToBrewingMethods(event);
 
-    // Add "selected" class to brewing button and remove from other button
-    this.buttonGroupTargets.forEach(button => button.classList.remove("selected"));
+    // Deselect other accessory button
+    this.otherButtonTarget.classList.remove("selected");
+
+    // Add "selected" class to brewing button
     this.brewingButtonTarget.classList.add("selected");
   }
 
@@ -51,8 +54,10 @@ export default class extends Controller {
     this.nameTarget.value = '';
     this.scrollToOtherAccessories(event);
 
-    // Add "selected" class to other button and remove from brewing button
-    this.buttonGroupTargets.forEach(button => button.classList.remove("selected"));
+    // Deselect brewing method button
+    this.brewingButtonTarget.classList.remove("selected");
+
+    // Add "selected" class to other button
     this.otherButtonTarget.classList.add("selected");
   }
 
@@ -62,5 +67,29 @@ export default class extends Controller {
 
   scrollToOtherAccessories(event) {
     this.otherAccessoriesTarget.querySelector("h3").scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  incrementMin(event) {
+    const minValue = parseInt(this.grinderMinInputTarget.value) || 0;
+    this.grinderMinInputTarget.value = minValue + 1;
+  }
+
+  decrementMin(event) {
+    const minValue = parseInt(this.grinderMinInputTarget.value) || 0;
+    if (minValue > 0) {
+      this.grinderMinInputTarget.value = minValue - 1;
+    }
+  }
+
+  incrementMax(event) {
+    const maxValue = parseInt(this.grinderMaxInputTarget.value) || 0;
+    this.grinderMaxInputTarget.value = maxValue + 1;
+  }
+
+  decrementMax(event) {
+    const maxValue = parseInt(this.grinderMaxInputTarget.value) || 0;
+    if (maxValue > 0) {
+      this.grinderMaxInputTarget.value = maxValue - 1;
+    }
   }
 }
