@@ -1,8 +1,10 @@
 # db/seeds.rb
 require 'csv'
 
-puts "Destroying all user_coffees and coffee_varieties"
+puts "Destroying all coffee_varieties"
 CoffeeVariety.destroy_all
+
+puts "Destroying all user_coffees"
 UserCoffee.destroy_all
 
 puts "Destroying all previous accessories"
@@ -25,13 +27,12 @@ unless User.exists?(email: 'admin@example.com')
     password_confirmation: 'password',
     nickname: 'admin'
   )
-  puts "Admin user created with EMAIL: admin@example.com and PASSWORD: password"
+  puts "Created Admin user with EMAIL: admin@example.com and PASSWORD: password"
 else
   admin_user = User.find_by(email: 'admin@example.com')
   puts "Admin user already exists with EMAIL: admin@example.com and PASSWORD: password"
 end
 
-puts "Creating all flavors"
 flavors = [
   # Parent Flavors
   { name: 'Fruity', color_code: '#E97F81' },
@@ -134,36 +135,7 @@ flavors.each do |flavor|
   Flavor.create!(flavor)
 end
 
-puts "Flavors created"
-
-puts "Destroying all previous accessories"
-Accessory.destroy_all
-
-puts "Creating accessories for admin user"
-
-accessories = [
-  { name: 'Santos', accessory_type: 'Grinder', grinder_min: 0, grinder_max: 30, user: admin_user },
-  { name: 'Sage Integrated Grinder', accessory_type: 'Grinder', default: true, grinder_min: 0, grinder_max: 30, user: admin_user },
-  { name: 'Sage Express Impress', accessory_type: 'Espresso', default: true, user: admin_user },
-  { name: 'My Drip Coffee Maker', accessory_type: 'Drip coffee', user: admin_user },
-  { name: 'Origamy Cone', accessory_type: 'Pour-Over', user: admin_user },
-  { name: 'Melita Brown Filter', accessory_type: 'Filter', user: admin_user },
-  { name: 'Sage Integrated Tamper', accessory_type: 'Tamper', default: true, user: admin_user },
-  { name: 'My Tamper', accessory_type: 'Tamper', user: admin_user },
-  { name: 'My Sage DOUBLE Basket', accessory_type: 'Basket', default: true, user: admin_user },
-  { name: 'My Sage SIMPLE Basket', accessory_type: 'Basket', user: admin_user },
-  { name: 'My Repartitor', accessory_type: 'Distribution Tool', user: admin_user },
-  { name: 'My WDT', accessory_type: 'Distribution Tool', user: admin_user },
-  { name: 'My Basic Kettle', accessory_type: 'Kettle', user: admin_user }
-]
-
-accessories.each do |accessory|
-  Accessory.create!(accessory)
-end
-
-puts "Accessories created"
-
-puts "Creating Coffee Varieties"
+puts "Created flavors"
 
 CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
   varieties.each do |variety|
@@ -177,9 +149,7 @@ CSV.open("lib/assets/coffee_varieties.csv", "rb", headers: true) do |varieties|
   end
 end
 
-puts "Coffee Varieties created"
-
-puts "Creating accessories for admin user"
+puts "Created coffee Varieties"
 
 accessories = [
   { name: 'Santos', accessory_type: 'Grinder', grinder_min: 0, grinder_max: 30, user: admin_user },
@@ -201,9 +171,7 @@ accessories.each do |accessory|
   Accessory.create!(accessory)
 end
 
-puts "Accessories created"
-
-puts "Creating coffees"
+puts "Created accessories for the admin user"
 
 cof = Coffee.new(
   name: "Alejandro Marin / BR300",
@@ -230,6 +198,7 @@ cof.varieties.push(Variety.find_by(name: 'Caturra'))
 cof.varieties.push(Variety.find_by(name: 'Typica'))
 cof.varieties.push(Variety.find_by(name: 'Catuai'))
 cof.save!
-puts "Coffees created"
 
-puts "Creating Seeds Completed"
+puts "Created coffees"
+
+puts "SEEDS COMPLETE"
