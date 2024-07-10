@@ -1,38 +1,11 @@
-<div class="container mt-5 accessory-show-page">
-  <div class="card">
-    <div class="card-header">
-      <h1>Edit <%= @accessory.name %></h1>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Details</h5>
-      <%= form_with model: @accessory, local: true do |form| %>
-        <div class="form-group">
-          <%= form.label :name %>
-          <%= form.text_field :name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= form.label :accessory_type, "Type" %>
-          <%= form.text_field :accessory_type, class: 'form-control', readonly: true %>
-        </div>
-        <% if @accessory.accessory_type == 'Grinder' %>
-          <div class="form-group">
-            <%= form.label :grinder_min %>
-            <%= form.number_field :grinder_min, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= form.label :grinder_max %>
-            <%= form.number_field :grinder_max, class: 'form-control' %>
-          </div>
-        <% end %>
-        <div class="form-group">
-          <%= form.label :comments %>
-          <%= form.text_area :comments, class: 'form-control' %>
-        </div>
-        <div class="form-actions">
-          <%= form.submit 'Save', class: 'btn btn-success' %>
-          <%= link_to 'Cancel', @accessory, class: 'btn btn-secondary' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= link_to 'Back', accessories_path, class: 'btn btn-secondary' %>
+<h1>Edit Accessory</h1>
+
+<%= render 'form', accessory: @accessory %>
+
+<script type="module">
+  import { initAccessoryForm } from 'controllers/accessory_form';
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccessoryForm();
+  });
+</script>
