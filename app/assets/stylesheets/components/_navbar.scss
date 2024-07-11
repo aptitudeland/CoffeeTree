@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background: #4b3621;
-  color: #d2b48c;
+  color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   font-size: x-large;
   padding-left: 1rem;
@@ -15,19 +15,19 @@
   width: 100vw;
   height: 3rem;
   z-index: 2;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  // box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
   a {
-    color: #d2b48c;
+    color: burlywood;
     text-decoration: none;
   }
 
   a:visited {
-    color: #d2b48c;
+    color: burlywood;
   }
 
   a:hover {
-    color: #d2b48c;
+    color: burlywood;
   }
 }
 
@@ -44,7 +44,7 @@
 
 .navbar-coffeetree .dropdown-menu {
   color: #4b3621;
-  background-color: #d2b48c;
+  background-color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
 
@@ -53,7 +53,7 @@
 }
 
 .navbar-coffeetree .dropdown-item:hover {
-  color: #d2b48c;
+  color: burlywood;
   background-color: #4b3621;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
@@ -64,14 +64,14 @@
   bottom: 0px;
   z-index: 2;
   background: #4b3621;
-  color: #d2b48c;
+  color: burlywood;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   padding-top: 5px;
   width: 100%;
   height: 4rem;
-  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+  // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -80,19 +80,19 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  color: #d2b48c;
+  color: burlywood;
   text-decoration: none;
 
   i {
     display: block;
     font-size: 2rem;
-    color: #d2b48c;
+    color: burlywood;
   }
 
   p {
     margin: 0;
     font-size: 1rem;
-    color: #d2b48c;
+    color: burlywood;
   }
 }
 
@@ -108,12 +108,12 @@
   border-radius: 50%;
   position: fixed;
   bottom: 20px;
-  background-color: #d2b48c;
+  background-color: burlywood;
   display: flex;
   height: 4rem;
   width: 4rem;
-  border: 2px solid #4b3621;
-  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #4b3621;
+  // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
   flex-direction: column;
   justify-content: center;
 
