@@ -45,12 +45,12 @@
         <%= f.input :grinder_min, label: "What is the minimal position?", input_html: { value: 0, placeholder: '0', class: 'form-control prefilled-input', data: { accessory_target: "grinderMinInput" } } %>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
-            <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMin", target: "accessory.grinderMinButton" }) do %>
+            <%= button_tag(type: 'button', class: 'btn btn-secondary  btn-minus-round', data: { action: "click->accessory#decrementMin", target: "accessory.grinderMinButton" }) do %>
               <i class="fas fa-minus"></i>
             <% end %>
           </div>
           <div class="input-group-append">
-            <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#incrementMin", target: "accessory.grinderMinButton" }) do %>
+            <%= button_tag(type: 'button', class: 'btn btn-primary btn-plus-round', data: { action: "click->accessory#incrementMin", target: "accessory.grinderMinButton" }) do %>
               <i class="fas fa-plus"></i>
             <% end %>
           </div>
@@ -61,12 +61,12 @@
         <%= f.input :grinder_max, label: "What is the maximal position?", input_html: { value: 30, placeholder: '30', class: 'form-control prefilled-input', data: { accessory_target: "grinderMaxInput" } } %>
         <div class="input-group new-acc-grinder-fields">
           <div class="input-group-prepend">
-            <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#decrementMax", target: "accessory.grinderMaxButton" }) do %>
+            <%= button_tag(type: 'button', class: 'btn btn-secondary btn-minus-round', data: { action: "click->accessory#decrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-minus"></i>
             <% end %>
           </div>
           <div class="input-group-append">
-            <%= button_tag(type: 'button', class: 'btn btn-outline-secondary', data: { action: "click->accessory#incrementMax", target: "accessory.grinderMaxButton" }) do %>
+            <%= button_tag(type: 'button', class: 'btn btn-primary btn-plus-round', data: { action: "click->accessory#incrementMax", target: "accessory.grinderMaxButton" }) do %>
               <i class="fas fa-plus"></i>
             <% end %>
           </div>
@@ -75,7 +75,7 @@
     </div>
 
     <div class="new-acc-actions-buttons">
-      <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+      <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
       <%= f.submit class: 'btn btn-primary' %>
     </div>
   <% end %>
