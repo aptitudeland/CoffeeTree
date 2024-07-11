@@ -1,5 +1,90 @@
-<h1>New Accessory</h1>
+<div class="new-acc-main-container">
+  <%= simple_form_for @accessory, html: { data: { controller: "accessory" } } do |f| %>
+    <div class="field new-acc-flex-column-center-container">
+      <h3>Which kind of accessory?</h3>
+      <div class="new-acc-main-btn-container" data-accessory-target="buttonGroup">
+        <%= button_tag(type: 'button', class: 'new-acc-main-button', data: { action: "click->accessory#showBrewingMethods", accessory_target: "brewingButton" }) do %>
+          <%= image_tag "accessories/brewing_method.png", alt: "Brewing Method" %>
+        <% end %>
+        <%= button_tag(type: 'button', class: 'new-acc-main-button', data: { action: "click->accessory#showOtherAccessories", accessory_target: "otherButton" }) do %>
+          <%= image_tag "accessories/other_accessory.png", alt: "Other Accessory" %>
+        <% end %>
+      </div>
+    </div>
 
-<%= render 'form', accessory: @accessory %>
+    <div class="field new-acc-flex-column-center-container" data-accessory-target="brewingMethods" style="display: none;">
+      <h4>Brewing Methods</h4>
+      <div class="new-acc-type-selection">
+        <% Accessory::BREWING_METHODS.each do |type| %>
+          <%= image_tag "accessories/#{type.parameterize(separator: '_')}_small.png", alt: type, data: { action: "click->accessory#select", accessory_target: "accessoryImage", type: type } %>
+        <% end %>
+      </div>
+    </div>
 
-<%= link_to 'Back', accessories_path, class: 'btn btn-secondary' %>
+    <div class="field new-acc-flex-column-center-container" data-accessory-target="otherAccessories" style="display: none;">
+      <h4>Other Accessories</h4>
+      <div class="new-acc-type-selection">
+        <% Accessory::ACCESSORY_TYPES.reject { |type| Accessory::BREWING_METHODS.include?(type) }.each do |type| %>
+          <%= image_tag "accessories/#{type.parameterize(separator: '_')}_small.png", alt: type, data: { action: "click->accessory#select", accessory_target: "accessoryImage", type: type } %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= f.hidden_field :accessory_type, id: "accessory_type", data: { accessory_target: "accessoryType" } %>
+
+    <div class="new-acc-flex-column-center-container">
+      <div class="field" style="display: none;" data-accessory-target="namefield">
+        <%= f.label :name, "Give a name to your new accessory" %>
+        <%= f.input :name, label: false, input_html: { data: { accessory_target: "name" } } %>
+      </div>
+
+
+      <div class= "new-acc-grinder-fields" style="display: none;" data-accessory-target="grinderFields">
+
+        <div class="new-acc-grinder-field_single">
+          <%= f.label :grinder_min, "MIN position?" %>
+          <div>
+            <%= button_tag(type: 'button', class: 'btn btn-secondary btn-minus-round', data: { action: "click->accessory#decrementMin", target: "accessory.grinderMinButton" }) do %>
+              <i class="fas fa-minus"></i>
+            <% end %>
+          </div>
+          <%= f.input :grinder_min, label: false, input_html: { value: 0, placeholder: '0', class: 'prefilled-input', data: { accessory_target: "grinderMinInput" } } %>
+          <div>
+            <%= button_tag(type: 'button', class: 'btn btn-primary btn-plus-round', data: { action: "click->accessory#incrementMin", target: "accessory.grinderMinButton" }) do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="new-acc-grinder-field_single">
+        <%= f.label :grinder_max, "MAX position?" %>
+          <div>
+            <%= button_tag(type: 'button', class: 'btn btn-secondary btn-minus-round', data: { action: "click->accessory#decrementMax", target: "accessory.grinderMaxButton" }) do %>
+              <i class="fas fa-minus"></i>
+            <% end %>
+          </div>
+          <%= f.input :grinder_max, label: false, input_html: { value: 30, placeholder: '30', class: 'prefilled-input', data: { accessory_target: "grinderMaxInput" } } %>
+          <div>
+            <%= button_tag(type: 'button', class: 'btn btn-primary btn-plus-round', data: { action: "click->accessory#incrementMax", target: "accessory.grinderMaxButton" }) do %>
+              <i class="fas fa-plus"></i>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="field" style="display: none;" data-accessory-target="commentsField">
+        <%= f.input :comments, label: "Comments", input_html: { data: { accessory_target: "comments" } } %>
+      </div>
+
+
+    <div class="new-acc-actions-buttons">
+      <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+      <%= f.submit class: 'btn btn-primary', style: "display: none;", data: { accessory_target: "createbutton" } %>
+      <%= f.submit class: 'btn btn-primary', style: "display: none;", data: { accessory_target: "createButton" } %>
+
+
+    </div>
+  <% end %>
+</div>

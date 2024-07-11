@@ -1,68 +1,99 @@
-.accessory-options-container {
+.new-acc-main-container {
+  img {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+  }
+
+  img.selected {
+    border-color: #4b3621;
+  }
+
+  .new-acc-main-button.selected img {
+    border-color: #4b3621;
+  }
+}
+
+.new-acc-main-btn-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  gap: 10px;
+  margin-bottom: 1em;
+  gap: 10px;
 }
 
-.accessory-section {
-  margin-bottom: 40px;
+.new-acc-main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-.accessory-section-title {
+.new-acc-type-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1em;
+  justify-content: center;
+}
+
+.new-acc-flex-column-center-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  align-content: center;
   text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  gap: 1em;
+  max-width: 80%;
+  margin: auto;
 }
 
-.accessory-option {
+.new-acc-flex-row-center-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.new-acc-grinder-fields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.new-acc-grinder-input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.new-acc-grinder-field_single {
   display: flex;
   flex-direction: column;
+  width: 150px;
+  gap: 5px;
+}
+
+.new-acc-actions-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: space-around;
 }
 
-.accessory-option img {
-  width: 100px;
-  height: 100px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-
-.accessory-option img.selected {
-  border: 2px solid blue;
-}
-
-.accessory-option img:hover {
-  transform: scale(1.1);
-}
-
-.accessory-option-label {
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.accessory-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.accessory-form .field {
-  margin-bottom: 20px;
-}
-
-.accessory-form .actions {
-  text-align: center;
-}
-
-#grinder_fields {
-  display: none;
-}
-
-#grinder_fields.active {
-  display: block;
+.prefilled-input {
+  flex-grow: 1;
+  width: 60px;
 }

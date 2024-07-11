@@ -1,29 +1,58 @@
-<h1>My Accessories</h1>
+<div class="acc-index-main-container">
+  <h1><%= current_user.nickname %>'s accessories</h1>
+  <div class="acc-index-actions-buttons">
+    <%= link_to 'Back', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Add New', new_accessory_path, class: 'btn btn-primary' %>
+  </div>
 
-<%= link_to 'New Accessory', new_accessory_path, class: 'btn btn-primary' %>
+  <div class="acc-index-list">
+    <!-- Brewing Methods Section -->
+    <div class="acc-index-section">
+      <h4>Brewing Methods</h4>
+      <% @accessories.select { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
+        <div class="acc-index-item-wrapper">
+          <%= link_to edit_accessory_path(accessory), class: "acc-index-item" do %>
+            <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, class: 'acc-index-image' %>
+            <div class="acc-index-item-content">
+              <h4><%= accessory.name %></h4>
+              <p>Type: <%= accessory.accessory_type %></p>
+              <% if accessory.accessory_type == 'Grinder' %>
+                <p>Grinder Range: <%= accessory.grinder_min %> - <%= accessory.grinder_max %></p>
+              <% end %>
+              <p><%= accessory.comments %></p>
+            </div>
+          <% end %>
+          <div class="acc-index-delete-button">
+            <%= link_to  accessory_path(accessory), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
+              <i class="fa-solid fa-xmark"></i>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @accessories.each do |accessory| %>
-      <tr>
-        <td><%= accessory.name %></td>
-        <td><%= accessory.accessory_type %></td>
-        <td><%= link_to 'Show', accessory, class: 'btn btn-secondary' %></td>
-        <td><%= link_to 'Edit', edit_accessory_path(accessory), class: 'btn btn-warning' %></td>
-        <td>
-          <%= form_with model: accessory, url: accessory_path(accessory), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'd-inline' do %>
-          <%= submit_tag 'Destroy', class: 'btn btn-danger' %>
-         <% end %>
-    </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <!-- Other Accessories Section -->
+    <div class="acc-index-section">
+      <h4>Other Accessories</h4>
+      <% @accessories.reject { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
+        <div class="acc-index-item-wrapper">
+          <%= link_to edit_accessory_path(accessory), class: "acc-index-item" do %>
+            <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, class: 'acc-index-image' %>
+            <div class="acc-index-item-content">
+              <h4><%= accessory.name %></h4>
+              <p>Type: <%= accessory.accessory_type %></p>
+              <% if accessory.accessory_type == 'Grinder' %>
+                <p>Grinder Range: <%= accessory.grinder_min %> - <%= accessory.grinder_max %></p>
+              <% end %>
+              <p><%= accessory.comments %></p>
+            </div>
+          <% end %>
+          <div class="acc-index-delete-button">
+            <%= link_to  accessory_path(accessory), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
+              <i class="fa-solid fa-xmark"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

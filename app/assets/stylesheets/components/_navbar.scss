@@ -1,24 +1,41 @@
-.navbar-coffeetree {
+/* TOP NAVBAR */
+.navbar-top {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   background: #4b3621;
-  color: #d2b48c;
+  color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   font-size: x-large;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 3rem;
+  z-index: 2;
+  // box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  a {
+    color: burlywood;
+    text-decoration: none;
+  }
 
   a:visited {
-    color: #d2b48c;
+    color: burlywood;
+  }
+
+  a:hover {
+    color: burlywood;
   }
 }
 
-.Navbar-app-name {
+.navbar-app-name {
   font-family: "Playwrite HR Lijeva", cursive;
   font-optical-sizing: auto;
   font-style: normal;
+  margin-bottom: 0;
 }
 
 .navbar-coffeetree .navbar-collapse {
@@ -27,15 +44,81 @@
 
 .navbar-coffeetree .dropdown-menu {
   color: #4b3621;
-  background-color: #d2b48c;
+  background-color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
-  a:visited {
-    color: #4b3621;
-  }
+}
+
+.navbar-coffeetree .dropdown-menu a:visited {
+  color: #4b3621;
 }
 
 .navbar-coffeetree .dropdown-item:hover {
-  color: #d2b48c;
+  color: burlywood;
   background-color: #4b3621;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+/* BOTTOM NAVBAR */
+.navbar-bottom {
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+  background: #4b3621;
+  color: burlywood;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 5px;
+  width: 100%;
+  height: 4rem;
+  // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-bottom-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  color: burlywood;
+  text-decoration: none;
+
+  i {
+    display: block;
+    font-size: 2rem;
+    color: burlywood;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: burlywood;
+  }
+}
+
+.new-extraction-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 200%;
+  text-decoration: none;
+}
+
+.new-extraction-btn {
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  background-color: burlywood;
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  border: 1px solid #4b3621;
+  // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    color: #4b3621;
+    font-size: 1.3rem;
+  }
 }
