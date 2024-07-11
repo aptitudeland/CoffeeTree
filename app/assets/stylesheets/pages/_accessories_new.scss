@@ -40,60 +40,30 @@
   justify-content: center;
 }
 
-.new-acc-flex-column-center-container {
+.acc-flex-column-center-container {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
   align-content: center;
   text-align: center;
   gap: 1em;
-  max-width: 80%;
   margin: auto;
-}
-
-.new-acc-flex-row-center-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
-  justify-content: center;
-  text-align: center;
 }
 
-.new-acc-grinder-fields {
+.new-acc-grinder-field {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.new-acc-grinder-input-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.new-acc-grinder-field_single {
-  display: flex;
-  flex-direction: column;
-  width: 150px;
+  width: 300px;
   gap: 5px;
+  align-items: baseline;
 }
 
-.new-acc-actions-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  justify-content: space-around;
-}
-
-.prefilled-input {
-  flex-grow: 1;
-  width: 60px;
+.new-acc-prefilled-input {
+  width: 100px;
 }
