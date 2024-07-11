@@ -1,13 +1,22 @@
-<div class= "acc-edit-main-container">
+<div class="acc-edit-main-container">
+
+  <div class="new-acc-actions-buttons">
+      <%= form_with model: @accessory, url: accessory_path(@accessory), method: :delete, data: { turbo_confirm: 'Êtes-vous sûr?' } do %>
+        <%= button_tag 'Delete', class: 'btn btn-warning' %>
+      <% end %>
+    </div>
+
   <%= simple_form_for(@accessory) do |f| %>
     <div class="acc-flex-column-center-container">
       <h3><%= @accessory.name %></h3>
 
       <%= image_tag Accessory.image_path(@accessory.accessory_type), alt: @accessory.name, class: 'accessory-image' %>
-      Type :
-      <%= f.select :accessory_type, Accessory::ACCESSORY_TYPES, {}, class: 'form-control' %>
 
-      <% if @accessory.accessory_type == "Grinder"%>
+      <div class="form-group">
+        <%= f.input :name, label: "Name", input_html: { class: 'form-control' } %>
+      </div>
+
+      <% if @accessory.accessory_type == "Grinder" %>
         <%= f.input :grinder_max, label: "Max Setting" %>
       <% end %>
 
