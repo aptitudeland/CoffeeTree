@@ -22,9 +22,15 @@ export default class extends Controller {
     const formData = new FormData(this.element)
     console.log(formData.get('coffee[name]'))
 
-    const urlParams = new URLSearchParams({
-      name:formData.get("coffee[name]"),
-    });
+    const urlParams = new URLSearchParams();
+
+    if (formData.get("coffee[name]") !== '')
+      urlParams.append("name", formData.get("coffee[name]"));
+    if (formData.get("coffee[roaster]") !== "")
+      urlParams.append("roaster", formData.get("coffee[roaster]"));
+    if (formData.get("coffee[roasting_date]") !== "")
+      urlParams.append("roasting_date", formData.get("coffee[roasting_date]"));
+
     fetch(baseUrl + "?" + urlParams.toString(), {
       headers: {
         'Accept': 'application/json'
