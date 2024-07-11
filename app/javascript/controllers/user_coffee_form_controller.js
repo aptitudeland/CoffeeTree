@@ -18,10 +18,7 @@ export default class extends Controller {
   fetchCoffee(event) {
     event.preventDefault()
     const baseUrl = "/user_coffees/new"
-
     const formData = new FormData(this.element)
-    console.log(formData.get('coffee[name]'))
-
     const urlParams = new URLSearchParams();
 
     if (formData.get("coffee[name]") !== '')
@@ -31,13 +28,19 @@ export default class extends Controller {
     if (formData.get("coffee[roasting_date]") !== "")
       urlParams.append("roasting_date", formData.get("coffee[roasting_date]"));
 
+
+    window.location.href = baseUrl + "?" + urlParams.toString();
+    
     fetch(baseUrl + "?" + urlParams.toString(), {
       headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/html'
       }
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        this.#fillCoffeeForm(data.coffee)
+  })
   }
 
   changeWeight(event){
@@ -46,6 +49,20 @@ export default class extends Controller {
       "value",
       parseInt(event.currentTarget.value) + parseInt(this.weightTarget.value)
     );
+  }
 
+  #fillCoffeeForm(coffeeData){
+    const country = this.element.querySelector("#coffee_country")
+    country.setAttribute("defaultValue", coffeeData.country);
+
+    this.#fillTextInput("#coffee_process", coffeeData.process);
+    this.#fillTextInput("#coffee_region", coffeeData.region);
+    this.#fillTextInput("#coffee_altitude", coffeeData.altitude);
+  }
+
+  #fillTextInput(name, value) {
+    this.element
+      .querySelector(name)
+      .setAttribute("value", value);
   }
 }

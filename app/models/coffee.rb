@@ -14,6 +14,15 @@ class Coffee < ApplicationRecord
     "#{self.attributes['name']} - #{self.attributes['roaster']} - #{self.attributes['roasting_date']} - #{self.attributes['country']}"
   end
 
+  def country_name
+    country = ISO3166::Country[self.attributes['country']]
+    if country
+      country.translations[I18n.locale.to_s] || country.common_name || country.iso_short_name
+    else
+      self.attributes['country']
+    end
+  end
+
   private
 
   def set_altitude
