@@ -12,16 +12,9 @@
   .new-acc-main-button.selected img {
     border-color: #4b3621;
   }
-
-  .btn-outline-secondary {
-    z-index: 1;
-  }
-  .form-control {
-    text-align: center;
-  }
 }
 
-.new-acc-main-buttons-container {
+.new-acc-main-btn-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -44,6 +37,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 1em;
+  justify-content: center;
 }
 
 .new-acc-flex-column-center-container {
@@ -54,6 +48,8 @@
   align-content: center;
   text-align: center;
   gap: 1em;
+  max-width: 80%;
+  margin: auto;
 }
 
 .new-acc-flex-row-center-container {
@@ -67,9 +63,24 @@
 }
 
 .new-acc-grinder-fields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.new-acc-grinder-input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.new-acc-grinder-field_single {
+  display: flex;
+  flex-direction: column;
   width: 150px;
-  margin: auto;
-  width: 50%;
+  gap: 5px;
 }
 
 .new-acc-actions-buttons {
@@ -80,4 +91,9 @@
   gap: 1rem;
   margin-bottom: 1rem;
   justify-content: space-around;
+}
+
+.prefilled-input {
+  flex-grow: 1;
+  width: 60px;
 }

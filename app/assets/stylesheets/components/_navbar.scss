@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background: #4b3621;
-  color: bisque;
+  color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   font-size: x-large;
   padding-left: 1rem;
@@ -18,16 +18,16 @@
   // box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
   a {
-    color: bisque;
+    color: burlywood;
     text-decoration: none;
   }
 
   a:visited {
-    color: bisque;
+    color: burlywood;
   }
 
   a:hover {
-    color: bisque;
+    color: burlywood;
   }
 }
 
@@ -44,7 +44,7 @@
 
 .navbar-coffeetree .dropdown-menu {
   color: #4b3621;
-  background-color: bisque;
+  background-color: burlywood;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
 
@@ -53,7 +53,7 @@
 }
 
 .navbar-coffeetree .dropdown-item:hover {
-  color: bisque;
+  color: burlywood;
   background-color: #4b3621;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
 }
@@ -64,7 +64,7 @@
   bottom: 0px;
   z-index: 2;
   background: #4b3621;
-  color: bisque;
+  color: burlywood;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -80,19 +80,19 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  color: bisque;
+  color: burlywood;
   text-decoration: none;
 
   i {
     display: block;
     font-size: 2rem;
-    color: bisque;
+    color: burlywood;
   }
 
   p {
     margin: 0;
     font-size: 1rem;
-    color: bisque;
+    color: burlywood;
   }
 }
 
@@ -108,7 +108,7 @@
   border-radius: 50%;
   position: fixed;
   bottom: 20px;
-  background-color: bisque;
+  background-color: burlywood;
   display: flex;
   height: 4rem;
   width: 4rem;

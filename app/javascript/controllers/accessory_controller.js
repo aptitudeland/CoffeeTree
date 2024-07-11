@@ -5,7 +5,8 @@ export default class extends Controller {
     "accessoryType", "grinderFields", "accessoryImage",
     "brewingMethods", "otherAccessories", "buttonGroup",
     "name", "brewingButton", "otherButton", "namefield",
-    "grinderMinInput", "grinderMaxInput", "commentsField"
+    "grinderMinInput", "grinderMaxInput", "commentsField",
+    "createButton"
   ];
 
   connect() {
@@ -14,7 +15,7 @@ export default class extends Controller {
 
   toggleGrinderFields() {
     if (this.accessoryTypeTarget.value === 'Grinder') {
-      this.grinderFieldsTargets.forEach(field => field.style.display = 'block');
+      this.grinderFieldsTargets.forEach(field => field.style.display = 'flex');
     } else {
       this.grinderFieldsTargets.forEach(field => field.style.display = 'none');
     }
@@ -42,6 +43,7 @@ export default class extends Controller {
     this.otherAccessoriesTarget.style.display = 'none';
     this.namefieldTarget.style.display = 'block';
     this.commentsFieldTarget.style.display = 'block';
+    this.createButtonTarget.style.display = 'block';
     this.nameTarget.value = '';
     this.scrollToBrewingMethods(event);
 
@@ -57,6 +59,7 @@ export default class extends Controller {
     this.otherAccessoriesTarget.style.display = 'block';
     this.namefieldTarget.style.display = 'block';
     this.commentsFieldTarget.style.display = 'block';
+    this.createButtonTarget.style.display = 'block';
     this.nameTarget.value = '';
     this.scrollToOtherAccessories(event);
 
@@ -73,11 +76,11 @@ export default class extends Controller {
   }
 
   scrollToBrewingMethods(event) {
-    this.brewingMethodsTarget.querySelector("h3").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.brewingMethodsTarget.querySelector("h4").scrollIntoView({ behavior: 'smooth', inline: "nearest" });
   }
 
   scrollToOtherAccessories(event) {
-    this.otherAccessoriesTarget.querySelector("h3").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.otherAccessoriesTarget.querySelector("h4").scrollIntoView({ behavior: 'smooth', inline: "nearest" });
   }
 
   incrementMin(event) {

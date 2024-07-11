@@ -1,26 +1,27 @@
 .btn-plus-round {
+  border: 1px solid burlywood;
   background-color: #4b3621;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
   p {
-    color: bisque;
+    // color: burlywood;
   }
 
   i {
-    color: bisque;
+    // color: burlywood;
   }
 }
 
 .btn-minus-round {
   border: 1px solid #4b3621;
-  background-color: bisque;
+  background-color: burlywood;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   // box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
