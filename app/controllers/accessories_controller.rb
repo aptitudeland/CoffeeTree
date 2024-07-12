@@ -25,7 +25,7 @@ class AccessoriesController < ApplicationController
     if @accessory.save
       redirect_to accessories_path, notice: 'Accessory was successfully created.'
     else
-      render :new, notice: 'Sorry the accessory FAILED to be created.'
+      redirect_to accessories_path, notice: 'Sorry the accessory FAILED to be created.'
     end
   end
 
@@ -33,7 +33,7 @@ class AccessoriesController < ApplicationController
     if @accessory.update(accessory_params)
       redirect_to accessory_path, notice: 'Accessory was successfully updated.'
     else
-      render :edit, notice: 'Sorry the accessory FAILED to be created.'
+      render :edit, status: :unprocessable_entity, notice: 'Sorry the accessory FAILED to be created.'
     end
   end
 
@@ -41,7 +41,7 @@ class AccessoriesController < ApplicationController
     if @accessory.destroy
       redirect_to accessories_url, notice: 'Accessory was successfully destroyed.'
     else
-      render :edit, notice: 'Sorry the accessory FAILED to be created.'
+      render :edit, status: :unprocessable_entity, notice: 'Sorry the accessory FAILED to be created.'
     end
   end
 
