@@ -1,0 +1,16 @@
+.extrac-new-main-container {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.extrac-new-step {
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 1rem;
+
+}

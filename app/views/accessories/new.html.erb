@@ -63,7 +63,7 @@
     </div>
 
 
-    <div class="new-acc-actions-buttons">
+    <div class="actions-buttons">
       <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
       <%= f.submit class: 'btn btn-primary', style: "display: none;", data: { accessory_target: "createButton" } %>
     </div>

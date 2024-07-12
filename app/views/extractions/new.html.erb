@@ -1,5 +1,77 @@
-<h1>New Extraction</h1>
+<div class= "extrac-new-main-container">
+  <div class="actions-buttons">
+      <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+  </div>
+  <h1>New Extraction</h1>
 
-<%= render 'form', extraction: @extraction %>
+  <div class="extrac-new-step">
+    <div class="extrac-new-acc-primary-acc">
+      <h4>primary accessories</h4>
+      user_coffee <br>
+      grinder <br>
+      brewing_method <br>
+      <br>
+    </div>
 
-<%= link_to 'Back', extractions_path %>
+    <div class="extrac-new-acc-secondary">
+      <h4>secondary accessories</h4>
+      basket <br>
+      tamper <br>
+      or <br>
+      filter <br>
+      kettle <br>
+      <br>
+    </div>
+
+    <div class="extrac-new-dials-before">
+      <h4>dials before</h4>
+      weight_in <br>
+      grinder_set <br>
+      weight_target <br>
+      water_temperature <br>
+      <br>
+    </div>
+
+    <div class="extrac-new-acc-optional">
+      <h4>optional accessories</h4>
+      espresso paper filter <br>
+      WDT<br>
+      Distributor<br>
+      <br>
+    </div>
+
+    <div class="extrac-new-comments">
+      <h4>comment</h4>
+      <br>
+    </div>
+  </div>
+
+  <div class="extrac-new-timer">
+    TIMER <br>
+    <br>
+  </div>
+
+  <div class="extrac-new-step">
+    <div class="extrac-new-dials-after">
+      <h4>dials after</h4>
+      weight_out <br>
+      <br>
+    </div>
+  </div>
+
+  <div class="extrac-new-step">
+    <div class="extrac-new-tasting">
+      <h4>Evaluation</h4>
+      rating 1-10<br>
+      flavors <br>
+      fragrance 1-10<br>
+      acidity 1-10<br>
+      flavor 1-10<br>
+      body 1-10<br>
+      aftertaste 1-10<br>
+      balance 1-10<br>
+      comments 1-10<br>
+    </div>
+  </div>
+
+</div>

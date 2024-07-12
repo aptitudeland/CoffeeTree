@@ -1,5 +1,5 @@
 <div class="new-acc-main-container">
-  <div class="new-acc-actions-buttons">
+  <div class="actions-buttons">
     <%= form_with model: @accessory, url: accessory_path(@accessory), method: :delete, data: { turbo_confirm: 'Êtes-vous sûr?' } do %>
       <%= button_tag 'Delete', class: 'btn btn-warning' %>
     <% end %>
@@ -16,7 +16,7 @@
     <%= @accessory.comments %>
   </div>
 
-  <div class="new-acc-actions-buttons">
+  <div class="actions-buttons">
     <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
   </div>
 </div>

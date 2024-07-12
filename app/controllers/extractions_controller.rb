@@ -24,7 +24,7 @@ class ExtractionsController < ApplicationController
     if @extraction.save
       redirect_to @extraction, notice: 'Extraction was successfully created.'
     else
-      render :new
+      render :new, notice: 'Sorry Extraction was NOT created.'
     end
   end
 
@@ -32,14 +32,18 @@ class ExtractionsController < ApplicationController
     if @extraction.update(extraction_params)
       redirect_to @extraction, notice: 'Extraction was successfully updated.'
     else
-      render :edit
+      render :edit, notice: 'Sorry Extraction was NOT updated.'
     end
   end
 
   def destroy
-    @extraction.destroy
-    redirect_to extractions_url, notice: 'Extraction was successfully destroyed.'
+    if @extraction.destroy
+      redirect_to extractions_url, notice: 'Extraction was successfully destroyed.'
+    else
+      redirect_to extractions_url, notice: 'Sorry, extraction was NOT destroyed.'
+    end
   end
+
 
   private
 
@@ -50,7 +54,11 @@ class ExtractionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def extraction_params
-    params.require(:extraction).permit(:brewing_method, :coffee_id, :user_coffee_id, :weight_in, :water_temperature, :pre_infusion_time, :bloom_weight, :extraction_time, :weight_out, :comment, accessory_ids: [])
+    params.require(:extraction).permit(
+      :brewing_method, :coffee_id, :user_coffee_id, :weight_in,
+      :water_temperature, :pre_infusion_time, :bloom_weight, :extraction_time,
+      :weight_out, :comment, :grinder_set, accessory_ids: []
+    )
   end
 
   # Ensure the current user is authorized to view/edit the extraction
