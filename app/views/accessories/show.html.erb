@@ -1,25 +1,22 @@
-<div class="container mt-5 accessory-show-page">
-  <div class="card">
-    <div class="card-header">
-      <h1><%= @accessory.name %></h1>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Details</h5>
-      <p class="card-text"><strong>Type:</strong> <%= @accessory.accessory_type %></p>
-      <% if @accessory.accessory_type == 'Grinder' %>
-        <p class="card-text"><strong>Grinder Min:</strong> <%= @accessory.grinder_min %></p>
-        <p class="card-text"><strong>Grinder Max:</strong> <%= @accessory.grinder_max %></p>
-      <% end %>
-      <p class="card-text"><strong>Comments:</strong> <%= @accessory.comments %></p>
-      <p class="card-text"><strong>Created At:</strong> <%= l(@accessory.created_at, format: :long) %></p>
-      <p class="card-text"><strong>Updated At:</strong> <%= l(@accessory.updated_at, format: :long) %></p>
-    </div>
-    <div class="card-footer text-muted">
-      <%= link_to 'Edit', edit_accessory_path(@accessory), class: 'btn btn-primary' %>
-      <%= link_to 'Back', accessories_path, class: 'btn btn-secondary' %>
-      <%= form_with model: @accessory, url: accessory_path(@accessory), method: :delete, data: { confirm: 'Are you sure?' }, class: 'd-inline' do %>
-        <%= submit_tag 'Delete', class: 'btn btn-danger' %>
-      <% end %>
-    </div>
+<div class="new-acc-main-container">
+  <div class="new-acc-actions-buttons">
+    <%= form_with model: @accessory, url: accessory_path(@accessory), method: :delete, data: { turbo_confirm: 'Êtes-vous sûr?' } do %>
+      <%= button_tag 'Delete', class: 'btn btn-warning' %>
+    <% end %>
+    <%= link_to edit_accessory_path(@accessory), class: "btn btn-outline-primary" do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+  </div>
+  <div class="field acc-flex-column-center-container">
+    <h3><%= @accessory.name %></h3><%= image_tag Accessory.image_path(@accessory.accessory_type), alt: @accessory.name, class: 'acc-show-accessory-image' %>
+    <p>Type : <%= @accessory.accessory_type %></p>
+    <% if @accessory.accessory_type == "Grinder"%>
+      <p>Range : <%= @accessory.grinder_min %> - <%= @accessory.grinder_max %> </p>
+    <% end %>
+    <%= @accessory.comments %>
+  </div>
+
+  <div class="new-acc-actions-buttons">
+    <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
   </div>
 </div>
