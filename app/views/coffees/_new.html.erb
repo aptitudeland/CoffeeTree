@@ -7,7 +7,7 @@
       <%= ff.input :roasting_date, as: :string,
             input_html: {
               data: { controller: "datepicker" },
-              value: coffee.roasting_date || Date.today } %>
+              value: coffee.roasting_date || nil } %>
     </div>
   </div>
   <%= ff.input :name %>

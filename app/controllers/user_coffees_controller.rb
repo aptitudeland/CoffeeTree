@@ -13,7 +13,7 @@ class UserCoffeesController < ApplicationController
     if @coffee
       @user_coffee.coffee = @coffee
     else
-      @coffee = @user_coffee.build_coffee
+      @coffee = @user_coffee.build_coffee(coffee_params)
     end
   end
 
@@ -21,7 +21,7 @@ class UserCoffeesController < ApplicationController
     @user_coffee = UserCoffee.create(user_coffee_params)
     @user_coffee.user = current_user
     @coffee = Coffee.find_by(coffee_params)
-    STDERR.puts @coffee.inspect
+
     unless @coffee
       @coffee = Coffee.create(coffee_params)
     end

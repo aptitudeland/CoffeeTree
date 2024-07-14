@@ -13,16 +13,15 @@ export default class extends Controller {
     const formData = new FormData(this.element)
     const urlParams = new URLSearchParams();
 
-    if (formData.get("coffee[name]") !== 'null')
+    if (formData.get("coffee[name]") !== '')
       urlParams.append("coffee[name]", formData.get("coffee[name]"));
     if (formData.get("coffee[roaster]") !== "")
       urlParams.append("coffee[roaster]", formData.get("coffee[roaster]"));
-    if (formData.get("coffee[roasting_date]") !== "")
+    if (formData.get("coffee[roasting_date]") !== '')
       urlParams.append(
         "coffee[roasting_date]",
         formData.get("coffee[roasting_date]")
       );
-
 
     window.location.href = baseUrl + "?" + urlParams.toString();
   }
