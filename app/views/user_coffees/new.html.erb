@@ -1,5 +1,4 @@
 <%= simple_form_for @user_coffee, html: {data: {controller: "user-coffee-form"}} do |f| %>
-  <%= f.association :coffee, label_method: :coffee_description, prompt: 'Add a new coffee',input_html: {data: {action: "user-coffee-form#toggleCoffeeFormVisibility"}} %>
   <div data-user-coffee-form-target="coffeeForm" class="">
     <%= render "coffees/new", coffee: @coffee %>
   </div>
