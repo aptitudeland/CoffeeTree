@@ -9,9 +9,9 @@
     <!-- Brewing Methods Section -->
     <div class="acc-index-section">
       <h4>Brewing Methods</h4>
-      <% @accessories.select { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
+      <% @brewing_methods.each do |accessory| %>
         <div class="acc-index-item-wrapper">
-          <%= link_to edit_accessory_path(accessory), class: "acc-index-item" do %>
+          <%= link_to accessory_path(accessory), class: "acc-index-item" do %>
             <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, class: 'acc-index-image' %>
             <div class="acc-index-item-content">
               <h4><%= accessory.name %></h4>
@@ -33,9 +33,9 @@
     <!-- Other Accessories Section -->
     <div class="acc-index-section">
       <h4>Other Accessories</h4>
-      <% @accessories.reject { |a| Accessory::BREWING_METHODS.include?(a.accessory_type) }.each do |accessory| %>
+      <% @other_accessories.each do |accessory| %>
         <div class="acc-index-item-wrapper">
-          <%= link_to edit_accessory_path(accessory), class: "acc-index-item" do %>
+          <%= link_to accessory_path(accessory), class: "acc-index-item" do %>
             <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, class: 'acc-index-image' %>
             <div class="acc-index-item-content">
               <h4><%= accessory.name %></h4>

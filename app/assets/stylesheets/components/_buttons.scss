@@ -1,3 +1,17 @@
+
+.new-acc-actions-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+
+  i {
+    color: black;
+  }
+}
+
 .btn-plus-round {
   border: 1px solid burlywood;
   background-color: #4b3621;
