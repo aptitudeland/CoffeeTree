@@ -5,13 +5,27 @@ class UserCoffeesController < ApplicationController
 
   def new
     @user_coffee = current_user.user_coffees.build
-    @coffee = @user_coffee.build_coffee
+
+    if params['coffee']
+      @coffee = Coffee.find_by(coffee_params)
+    end
+
+    if @coffee
+      @user_coffee.coffee = @coffee
+    else
+      @coffee = @user_coffee.build_coffee(coffee_params)
+    end
   end
 
   def create
     @user_coffee = UserCoffee.create(user_coffee_params)
     @user_coffee.user = current_user
-    @user_coffee.coffee = Coffee.create(coffee_params) unless @user_coffee.coffee_id
+    @coffee = Coffee.find_by(coffee_params)
+
+    unless @coffee
+      @coffee = Coffee.create(coffee_params)
+    end
+    @user_coffee.coffee = @coffee
 
     if @user_coffee.save
       redirect_to user_coffees_path
@@ -27,6 +41,6 @@ class UserCoffeesController < ApplicationController
   end
 
   def coffee_params
-    params.require(:coffee).permit(:name, :roaster, :roasting_date, :process, :country, :region, :altitude)
+    params.require(:coffee).permit(:name, :roaster, :roasting_date, :process, :country, :region, :altitude_low, :altitude_high)
   end
 end

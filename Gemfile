@@ -51,6 +51,10 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 
+
+# Add date selection for forms [https://github.com/zokioki/flatpickr-rails]
+gem 'flatpickr'
+
 # Add country selection for coffee creation form [https://rubygems.org/gems/country_select]
 gem 'country_select', '~> 9.0'
 
