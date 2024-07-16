@@ -28,9 +28,10 @@ class Accessory < ApplicationRecord
   has_and_belongs_to_many :extractions
 
   validates :name, presence: true
-  validates :accessory_type, presence: true
+  validates :accessory_type, presence: true, inclusion: {in: Accessory::ACCESSORY_TYPES}
   validates :grinder_min, presence: true, if: -> { accessory_type == 'Grinder' }
   validates :grinder_max, presence: true, if: -> { accessory_type == 'Grinder' }
+  validate :grinder_max_is_superior_to_grinder_min
 
   before_save :ensure_single_default
 
@@ -39,6 +40,12 @@ class Accessory < ApplicationRecord
   end
 
   private
+
+  def grinder_max_is_superior_to_grinder_min
+    if grinder_max && grinder_min && grinder_max < grinder_min
+      errors.add(:grinder_max, "can't be greater than grinder_min")
+    end
+  end
 
   def ensure_single_default
     if self.default
