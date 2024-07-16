@@ -22,7 +22,7 @@
         <td><%= extraction.weight_out %></td>
         <td><%= link_to 'Show', extraction %></td>
         <td><%= link_to 'Edit', edit_extraction_path(extraction) %></td>
-        <td><%= link_to 'Destroy', extraction, method: :delete, data: { turbo_confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', extraction, class: 'btn btn-warning', data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>

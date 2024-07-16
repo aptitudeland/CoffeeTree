@@ -34,6 +34,9 @@ class Accessory < ApplicationRecord
 
   before_save :ensure_single_default
 
+  scope :grinder, -> { where(accessory_type: 'Grinder') }
+  scope :brewing_method, -> { where(accessory_type: Accessory::BREWING_METHODS) }
+
   def self.image_path(type)
     "accessories/#{type.parameterize(separator: '_')}_small.png"
   end

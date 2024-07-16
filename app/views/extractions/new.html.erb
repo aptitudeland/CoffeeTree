@@ -4,7 +4,8 @@
   </div>
   <h1>New Extraction</h1>
 
-
+<%= simple_form_for(@extraction) do |f| %>
+  <% @default_params ||= {} %>
 
     <div class="extrac-new-step">
       <div class="extrac-new-acc-container">
@@ -12,16 +13,29 @@
           Coffee
           <div class="extrac-new-acc-tile">
           </div>
+          <%= f.input :user_coffee_id,
+              collection: current_user.user_coffees, as: :select,
+              include_blank: true,
+              label: false,
+              value_method: :id,
+              input_html: { class: 'form-control', multiple: false } %>
         </div>
-        <div>
-          Grinder
-          <div class="extrac-new-acc-tile">
+          <div>
+            Grinder
+            <div class="extrac-new-acc-tile">
+            </div>
+            <%= f.input :accessory_ids,
+                collection: current_user.accessories.grinder, as: :select,
+                include_blank: true,
+                label: false,
+                value_method: :id,
+                input_html: { class: 'form-control', multiple: false } %>
           </div>
-        </div>
         <div>
           Brewer
           <div class="extrac-new-acc-tile">
           </div>
+            <%= f.input :brewing_method, collection: current_user.accessories.brewing_method, label: false, input_html: { class: 'form-control' } %>
         </div>
       </div>
 
@@ -76,7 +90,10 @@
       </div>
     </div>
 
-<%= render 'form' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+
+ <% end %>
+
 
   BUTTON VALIDATE <br>
   <br>

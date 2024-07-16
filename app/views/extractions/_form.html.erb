@@ -2,16 +2,6 @@
   <% @default_params ||= {} %>
 
   <div class="form-group">
-    <%= f.label :brewing_method %>
-    <%= f.input :brewing_method, collection: Accessory::BREWING_METHODS, label: false, input_html: { class: 'form-control' } %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :user_coffee_id, "User Coffee" %>
-    <%= f.collection_select :user_coffee_id, current_user.user_coffees, :id, :name, { prompt: "Select User Coffee" }, input_html: { class: 'form-control', value: @default_params[:user_coffee_id] } %>
-  </div>
-
-  <div class="form-group">
     <%= f.input :weight_in, label: "Weight In", input_html: { class: 'form-control', value: @default_params[:weight_in] } %>
   </div>
 
@@ -47,17 +37,6 @@
     <%= f.input :comment, as: :text, label: "Comment", input_html: { class: 'form-control', value: @default_params[:comment] } %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :accessory_ids, "Accessories" %>
-    <%= f.collection_check_boxes :accessory_ids, current_user.accessories, :id, :name do |cb| %>
-      <div class="checkbox">
-        <label>
-          <%= cb.check_box %>
-          <%= cb.text %>
-        </label>
-      </div>
-    <% end %>
-  </div>
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-primary' %>
