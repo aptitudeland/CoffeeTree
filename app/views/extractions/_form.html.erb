@@ -1,0 +1,66 @@
+<%= simple_form_for(@extraction) do |f| %>
+  <% @default_params ||= {} %>
+
+  <div class="form-group">
+    <%= f.label :brewing_method %>
+    <%= f.input :brewing_method, collection: Accessory::BREWING_METHODS, label: false, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_coffee_id, "User Coffee" %>
+    <%= f.collection_select :user_coffee_id, current_user.user_coffees, :id, :name, { prompt: "Select User Coffee" }, input_html: { class: 'form-control', value: @default_params[:user_coffee_id] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :weight_in, label: "Weight In", input_html: { class: 'form-control', value: @default_params[:weight_in] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :weight_target, label: "Weight Target", input_html: { class: 'form-control', value: @default_params[:weight_target] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :water_temperature, label: "Water Temperature", input_html: { class: 'form-control', value: @default_params[:water_temperature] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :pre_infusion_time, label: "Pre-infusion Time", input_html: { class: 'form-control', value: @default_params[:pre_infusion_time] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :bloom_weight, label: "Bloom Weight", input_html: { class: 'form-control', value: @default_params[:bloom_weight] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :extraction_time, label: "Extraction Time", input_html: { class: 'form-control', value: @default_params[:extraction_time] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :weight_out, label: "Weight Out", input_html: { class: 'form-control', value: @default_params[:weight_out] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :grinder_set, label: "Grinder Set", input_html: { class: 'form-control', value: @default_params[:grinder_set] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :comment, as: :text, label: "Comment", input_html: { class: 'form-control', value: @default_params[:comment] } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :accessory_ids, "Accessories" %>
+    <%= f.collection_check_boxes :accessory_ids, current_user.accessories, :id, :name do |cb| %>
+      <div class="checkbox">
+        <label>
+          <%= cb.check_box %>
+          <%= cb.text %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Back', extractions_path, class: 'btn btn-secondary' %>
+  </div>
+<% end %>

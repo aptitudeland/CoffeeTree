@@ -1,9 +1,9 @@
 .extrac-new-main-container {
 display: flex;
 flex-direction: column;
-gap: 1rem;
 
   h1 {
+    margin-top: 0px;
     text-align: center;
   }
 }
@@ -11,6 +11,25 @@ gap: 1rem;
 .extrac-new-step {
   border: 1px solid lightgray;
   background-color: white;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1em;
+}
 
+.extrac-new-acc-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.extrac-new-acc-single {
+  display: flex;
+  flex-direction: column;
+}
+
+.extrac-new-acc-tile {
+ height: 100px;
+ width: 100px;
+ border: 1px solid lightgray;
 }

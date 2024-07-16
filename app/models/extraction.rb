@@ -1,10 +1,11 @@
 class Extraction < ApplicationRecord
   belongs_to :user
-  belongs_to :coffee
   belongs_to :user_coffee
   has_and_belongs_to_many :accessories
   has_many :tastings
   validate :must_have_brewer
+  validates :user_coffee, presence: true
+  validates :user, presence: true
 
   private
 
