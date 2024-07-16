@@ -6,14 +6,15 @@ class UserCoffeesController < ApplicationController
   def new
     @user_coffee = current_user.user_coffees.build
 
-    if params['coffee']
+    if params["coffee"]
       @coffee = Coffee.find_by(coffee_params)
-    end
-
-    if @coffee
-      @user_coffee.coffee = @coffee
+      if @coffee
+        @user_coffee.coffee = @coffee
+      else
+        @coffee = @user_coffee.build_coffee(coffee_params)
+      end
     else
-      @coffee = @user_coffee.build_coffee(coffee_params)
+      @coffee = @user_coffee.build_coffee
     end
   end
 
