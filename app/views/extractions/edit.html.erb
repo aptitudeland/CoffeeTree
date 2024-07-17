@@ -1,5 +1,87 @@
-<h1>Edit Extraction</h1>
+<div class="new-acc-main-container">
+  <%= simple_form_for(@extraction) do |f| %>
+    <div class="field new-acc-flex-column-center-container">
+      <h3>Edit Extraction</h3>
 
+      <div class="extrac-new-acc-single">
+        Coffee
+        <div class="extrac-new-acc-tile"></div>
+        <%= f.input :user_coffee_id,
+                    collection: current_user.user_coffees, as: :select,
+                    include_blank: true, label: false,
+                    value_method: :id, input_html: { class: 'form-control', multiple: false } %>
+      </div>
 
+      <div>
+        Grinder
+        <div class="extrac-new-acc-tile"></div>
+        <%= f.input :grinder_id,
+                    collection: current_user.accessories.where(accessory_type: 'Grinder').pluck(:name, :id),
+                    as: :select, include_blank: true, label: false,
+                    input_html: { class: 'form-control', multiple: false } %>
+      </div>
 
-<%= link_to 'Back', extractions_path %>
+      <div>
+        Brewer
+        <div class="extrac-new-acc-tile"></div>
+        <%= f.input :brewing_method_id,
+                    collection: current_user.accessories.where(accessory_type: Accessory::BREWING_METHODS).pluck(:name, :id),
+                    as: :select, include_blank: true, label: false,
+                    input_html: { class: 'form-control', multiple: false } %>
+      </div>
+
+      <div>
+        <%= f.input :grinder_set, input_html: { class: 'form-control' }, label: 'Grinder Setting' %>
+      </div>
+
+      <div>
+        <%= f.input :weight_in, input_html: { class: 'form-control' }, label: 'Weight In' %>
+      </div>
+
+      <div>
+        <%= f.input :weight_target, input_html: { class: 'form-control' }, label: 'Weight Target' %>
+      </div>
+
+      <div>
+        <%= f.input :weight_out, input_html: { class: 'form-control' }, label: 'Weight Out' %>
+      </div>
+
+      <div>
+        <%= f.input :water_temperature, input_html: { class: 'form-control' }, label: 'Water Temperature' %>
+      </div>
+
+      <div>
+        <%= f.input :pre_infusion_time, input_html: { class: 'form-control' }, label: 'Pre-infusion Time' %>
+      </div>
+
+      <div>
+        <%= f.input :bloom_weight, input_html: { class: 'form-control' }, label: 'Bloom Weight' %>
+      </div>
+
+      <div>
+        <%= f.input :extraction_time, input_html: { class: 'form-control' }, label: 'Extraction Time' %>
+      </div>
+
+      <div>
+        <%= f.input :comment, input_html: { class: 'form-control' }, label: 'Comments' %>
+      </div>
+
+      <div class="extrac-new-acc-secondary">
+        <h4>Optional Accessories</h4>
+        <%= f.input :accessory_ids,
+                    collection: current_user.accessories.where.not(accessory_type: Accessory::BREWING_METHODS + ['Grinder']),
+                    as: :check_boxes, label_method: :name, value_method: :id,
+                    input_html: { class: 'form-check-input' },
+                    item_wrapper_class: 'form-check' %>
+      </div>
+    </div>
+
+    <div class="new-acc-actions-buttons">
+      <%= link_to 'Back to Dashboard', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
+      <div class="btn btn-warning">
+        <%= link_to 'Delete Extraction', @extraction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-warning' %>
+      </div>
+      <%= f.button :submit, 'Update Extraction', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

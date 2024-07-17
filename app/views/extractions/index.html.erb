@@ -1,14 +1,28 @@
-<h1>My Extractions</h1>
-
-<%= link_to 'New Extraction', new_extraction_path %>
+<%= link_to 'New Extraction', new_extraction_path, class: "btn btn-primary" %>
+  <br>
+  <br> <h1>My Extractions</h1>
+<br>
 
 <table>
   <thead>
     <tr>
+      <th>Show</th>
+      <th>Destroy</th>
       <th>Brewing Method</th>
       <th>Coffee</th>
       <th>Weight In</th>
       <th>Weight Out</th>
+      <th>Grinder</th>
+      <th>Grinder Setting</th>
+      <th> Weight In</th>
+      <th>Weight Target</th>
+      <th>Weight Out</th>
+      <th>Water Temperature</th>
+      <th>Pre-infusion Time</th>
+      <th>Bloom Weight</th>
+      <th>Extraction Time</th>
+      <th>Comments</th>
+      <th>Accessories</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +30,21 @@
   <tbody>
     <% @extractions.each do |extraction| %>
       <tr>
-        <td><%= extraction.brewing_method.name %></td>
-        <td><%= extraction.user_coffee.name if extraction.user_coffee %></td>
-        <td><%= extraction.weight_in %></td>
-        <td><%= extraction.weight_out %></td>
-        <td><%= link_to 'Show', extraction %></td>
-        <td><%= link_to 'Edit', edit_extraction_path(extraction) %></td>
+        <td><%= link_to 'Show', extraction, class: 'btn btn-secondary' %></td>
         <td><%= link_to 'Destroy', extraction, class: 'btn btn-warning', data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
+        <td><%= extraction.brewing_method.name %></td>
+        <td><%= extraction.user_coffee.name%></td>
+        <td><%= extraction.accessories.find_by(accessory_type: 'Grinder')&.name %></td>
+        <td><%= extraction.grinder_set %></td>
+        <td><%= extraction.weight_in %></td>
+        <td><%= extraction.weight_target %></td>
+        <td><%= extraction.weight_out %></td>
+        <td><%= extraction.water_temperature %></td>
+        <td><%= extraction.pre_infusion_time %></td>
+        <td><%= extraction.bloom_weight %></td>
+        <td><%= extraction.extraction_time %></td>
+        <td><%= extraction.comment %></td>
+        <td><%= extraction.accessories.where.not(accessory_type: 'Grinder').map(&:name).join(', ') %></td>
       </tr>
     <% end %>
   </tbody>

@@ -8,4 +8,5 @@ class Extraction < ApplicationRecord
   validates :user_coffee, presence: true
   validates :user, presence: true
 
+  attr_accessor :grinder_id
 end
