@@ -1,10 +1,31 @@
 <%= simple_fields_for coffee do |ff| %>
+  <div class="row">
+    <div class="col-7">
+      <%= ff.input :roaster %>
+    </div>
+    <div class="col-5">
+      <%= ff.input :roasting_date, as: :string,
+            input_html: {
+              data: { controller: "datepicker" },
+              value: coffee.roasting_date || nil } %>
+    </div>
+  </div>
   <%= ff.input :name %>
-  <%= ff.input :roaster %>
-  <%= ff.input :roasting_date %>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary" data-action="click->user-coffee-form#fetchCoffee"> Find coffee batch </button>
+  </div>
   <%= ff.input :process %>
   <%= ff.input :country %>
   <%= ff.input :region %>
-  <%= ff.input :altitude %>
-  <%= ff.association :varieties %>
+  <div class="row">
+    <div class="col">
+      <%= ff.input :altitude_low, label: "Min alt.",
+        input_html: {step: 50, value: coffee.altitude_low || 1500} %>
+    </div>
+    <div class="col">
+      <%= ff.input :altitude_high, label: "Max alt.",
+        input_html: {step: 50, value: coffee.altitude_high || 1500} %>
+    </div>
+  </div>
+  <%= ff.association :varieties if coffee %>
 <% end %>

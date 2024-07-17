@@ -1,7 +1,27 @@
-<%= simple_form_for @user_coffee do |f| %>
-  <%= f.association :coffee, prompt: 'Add a new coffee' %>
-  <%= render "coffees/new", coffee: @coffee %>
-  <%= f.input :bag_weight, collection: UserCoffee::BAG_WEIGHTS %>
-  <%= f.input :price, placeholder: '0'%>
-  <%= f.submit %>
+<%= simple_form_for @user_coffee, html: {data: {controller: "user-coffee-form"}} do |f| %>
+  <div data-user-coffee-form-target="coffeeForm" class="">
+    <%= render "coffees/new", coffee: @coffee %>
+  </div>
+  <div class="row justify-content-evenly">
+    <button class="col-2 m-1 btn btn-danger" data-action="click->user-coffee-form#changeWeight" value="-250">--</button>
+    <button class="col-2 m-1 btn btn-danger" data-action="click->user-coffee-form#changeWeight" value="-50">-</button>
+      <%= f.input :bag_weight,
+        as: :string,
+        label: 'Weight',
+        wrapper_html: {
+          class: 'col-3 d-flex flex-column justify-content-center align-self-strech'
+        },
+        input_html: {
+          class: 'mb-0',
+          value: '250',
+          data: { target: 'user-coffee-form.weight' }
+        }
+      %>
+    <button class="col-2 m-1 btn btn-success" data-action="click->user-coffee-form#changeWeight" value="50">+</button>
+    <button class="col-2 m-1 btn btn-success" data-action="click->user-coffee-form#changeWeight" value="250">++</button>
+  </div>
+  <%= f.input :price, input_html: {value: '8'} %>
+  <div class="d-flex justify-content-center">
+    <%= f.submit "Register new coffee", class: 'btn btn-primary mb-3' %>
+  </div>
 <% end %>
