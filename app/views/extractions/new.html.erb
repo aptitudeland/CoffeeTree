@@ -1,6 +1,6 @@
 <div class= "extrac-new-main-container">
   <div class="actions-buttons">
-      <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+    <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
   </div>
   <h1>New Extraction</h1>
 
@@ -35,7 +35,9 @@
           Brewer
           <div class="extrac-new-acc-tile">
           </div>
-            <%= f.input :brewing_method, collection: current_user.accessories.brewing_method, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :brewing_method_id, collection: current_user.accessories.where(accessory_type: Accessory::BREWING_METHODS).pluck(:name, :id), label: false, input_html: { class: 'form-control' } %>
+
+
         </div>
       </div>
 
@@ -90,12 +92,11 @@
       </div>
     </div>
 
+
     <%= f.button :submit, class: 'btn btn-primary' %>
 
  <% end %>
 
-
-  BUTTON VALIDATE <br>
   <br>
 
     <div class="extrac-new-step">

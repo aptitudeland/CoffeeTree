@@ -21,18 +21,25 @@ class ExtractionsController < ApplicationController
 
   def create
     @extraction = current_user.extractions.build(extraction_params)
-    # @extraction.user = current_user
-
     if @extraction.user_coffee_id.present?
       @extraction.coffee_id = UserCoffee.find(@extraction.user_coffee_id).coffee_id
     else
-      render :new, status: :unprocessable_entity, notice: 'Sorry the extractionneed to be associated with a coffee.'
+      flash.now[:alert] = 'Sorry, the extraction needs to be associated with a coffee.'
+      render :new, status: :unprocessable_entity and return
+    end
+
+    if @extraction.brewing_method_id.present?
+      @extraction.brewing_method_id = params[:extraction][:brewing_method_id]
+    else
+      flash.now[:alert] = 'Sorry, the extraction needs to be associated with a brewing method.'
+      render :new, status: :unprocessable_entity and return
     end
 
     if @extraction.save
       redirect_to @extraction, notice: 'Extraction was successfully created.'
     else
-      render :new, status: :unprocessable_entity, notice: 'Sorry the extraction FAILED to be created.'
+      flash.now[:alert] = @extraction.errors.full_messages.join(", ")
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -60,7 +67,7 @@ class ExtractionsController < ApplicationController
 
   def extraction_params
     params.require(:extraction).permit(
-      :brewing_method, :coffee_id, :user_coffee_id, :weight_in,
+      :brewing_method_id, :coffee_id, :user_coffee_id, :weight_in,
       :weight_target, :water_temperature, :pre_infusion_time, :bloom_weight,
       :extraction_time, :weight_out, :comment, :grinder_set, accessory_ids: []
     )

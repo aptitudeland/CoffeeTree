@@ -16,7 +16,7 @@
   <tbody>
     <% @extractions.each do |extraction| %>
       <tr>
-        <td><%= extraction.brewing_method %></td>
+        <td><%= extraction.brewing_method.name %></td>
         <td><%= extraction.user_coffee.name if extraction.user_coffee %></td>
         <td><%= extraction.weight_in %></td>
         <td><%= extraction.weight_out %></td>
