@@ -15,7 +15,7 @@
     <button class="btn btn-primary" data-action="click->user-coffee-form#fetchCoffee"> Find coffee batch </button>
   </div>
   <%= ff.input :process %>
-  <%= ff.input :country %>
+  <%= ff.input :country, selected: coffee.country %>
   <%= ff.input :region %>
   <div class="row">
     <div class="col">
