@@ -34,8 +34,16 @@ class Accessory < ApplicationRecord
 
   before_save :ensure_single_default
 
-  scope :grinder, -> { where(accessory_type: 'Grinder') }
   scope :brewing_method, -> { where(accessory_type: Accessory::BREWING_METHODS) }
+  scope :grinder, -> { where(accessory_type: 'Grinder') }
+  scope :optionals, -> { where(accessory_type: ['Scale', 'Basket', 'Tamper', 'Filter', 'Kettle', 'Distribution Tool', 'Other']) }
+  scope :scale, -> { where(accessory_type: 'Scale') }
+  scope :basket, -> { where(accessory_type: 'Basket') }
+  scope :tamper, -> { where(accessory_type: 'Tamper') }
+  scope :filtering, -> { where(accessory_type: 'Filter') }
+  scope :kettle, -> { where(accessory_type: 'Kettle') }
+  scope :distribution_tool, -> { where(accessory_type: 'Distribution Tool') }
+  scope :other, -> { where(accessory_type: 'Other') }
 
   def self.image_path(type)
     "accessories/#{type.parameterize(separator: '_')}_small.png"

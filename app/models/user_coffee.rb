@@ -15,6 +15,16 @@ class UserCoffee < ApplicationRecord
     coffee.name
   end
 
+  def coffee_details
+    # "#{coffee.roaster} | #{coffee.name} | #{coffee.roasting_date} | #{remaining_quantity} gr left"
+    "#{coffee.roaster} | #{coffee.name} | #{coffee.roasting_date}"
+  end
+
+  def remaining_quantity
+    total_weight_in = extractions.sum(:weight_in)
+    bag_weight - total_weight_in
+  end
+
   private
 
   def set_weight_left
