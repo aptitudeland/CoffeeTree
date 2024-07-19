@@ -1,6 +1,11 @@
 class UserCoffeesController < ApplicationController
+  before_action :set_user_coffee, only: %w[show edit update destroy]
   def index
-    @user_coffees = current_user.user_coffees.includes(:coffee)
+    @user_coffees = current_user.user_coffees.active.includes(:coffee)
+  end
+
+  def show
+    @coffee = UserCoffee.find(params[:id])
   end
 
   def new
@@ -35,10 +40,31 @@ class UserCoffeesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @user_coffee.update(user_coffee_params)
+      head :ok
+    else
+      render :back, status: :unprocessable_entity
+    end
+
+  end
+
+  def destroy
+
+  end
+
   private
 
+  def set_user_coffee
+    @user_coffee = UserCoffee.find(params[:id])
+  end
+
   def user_coffee_params
-    params.require(:user_coffee).permit(:bag_weight, :weight_left, :price, :coffee_id)
+    params.require(:user_coffee).permit(:bag_weight, :weight_left, :price, :coffee_id, :archived)
   end
 
   def coffee_params
