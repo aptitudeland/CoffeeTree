@@ -178,7 +178,7 @@ cof = Coffee.new(
   roaster: "Shouka",
   roasting_date: "2024-02-05",
   process: "Naturel Anaérobie",
-  country: "Colombie",
+  country: "CO",
   region: "Finca Patio Bonito, Salento, Qunidlo",
   altitude: 1650
 )
@@ -190,7 +190,7 @@ cof = Coffee.new(
   roaster: "Kultivar",
   roasting_date: "2023-09-06",
   process: "Lavée",
-  country: "Bolivie",
+  country: "BO",
   region: "La Paz",
   altitude: 1660
 )
