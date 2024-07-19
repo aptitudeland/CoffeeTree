@@ -40,20 +40,12 @@ class UserCoffeesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     if @user_coffee.update(user_coffee_params)
       head :ok
     else
-      render :back, status: :unprocessable_entity
+      head :unprocessable_entity
     end
-
-  end
-
-  def destroy
 
   end
 
@@ -64,7 +56,7 @@ class UserCoffeesController < ApplicationController
   end
 
   def user_coffee_params
-    params.require(:user_coffee).permit(:bag_weight, :weight_left, :price, :coffee_id, :archived)
+    params.require(:user_coffee).permit(:bag_weight, :weight_left, :price, :coffee_id, :archived, :personal_notes)
   end
 
   def coffee_params

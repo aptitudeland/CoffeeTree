@@ -24,7 +24,7 @@ class UserCoffee < ApplicationRecord
   end
 
   def check_weight_left
-    if self.weight_left <= 0
+    if self.weight_left && self.weight_left <= 0
       self.weight_left = 0
       self.archived = true
     end
