@@ -11,6 +11,10 @@ class UserCoffee < ApplicationRecord
   validates :weight_left, presence: true, numericality: { greater_than: -1 }
   accepts_nested_attributes_for :coffee
 
+  def name
+    coffee.name
+  end
+
   private
 
   def set_weight_left

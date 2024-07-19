@@ -1,11 +1,27 @@
+<div class="actions-buttons">
+  <%= link_to 'Back', extractions_path, class: 'btn btn-outline-secondary' %>
+  <%= link_to 'Edit', edit_extraction_path(@extraction), class: 'btn btn-secondary' %>
+  <%= link_to 'Destroy', @extraction, class: 'btn btn-warning', data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
+</div>
+
 <p>
   <strong>Brewing Method:</strong>
-  <%= @extraction.brewing_method %>
+  <%= @extraction.brewing_method.name %>
 </p>
 
 <p>
   <strong>Coffee:</strong>
-  <%= @extraction.coffee.name if @extraction.coffee %>
+  <%= @extraction.user_coffee.name if @extraction.user_coffee %>
+</p>
+
+<p>
+  <strong>Grinder:</strong>
+  <%= @extraction.accessories.find_by(accessory_type: 'Grinder')&.name %>
+</p>
+
+<p>
+  <strong>Grinder Setting:</strong>
+  <%= @extraction.grinder_set %>
 </p>
 
 <p>
@@ -14,9 +30,41 @@
 </p>
 
 <p>
+  <strong>Weight Target:</strong>
+  <%= @extraction.weight_target %>
+</p>
+
+<p>
   <strong>Weight Out:</strong>
   <%= @extraction.weight_out %>
 </p>
 
-<%= link_to 'Edit', edit_extraction_path(@extraction) %> |
-<%= link_to 'Back', extractions_path %>
+<p>
+  <strong>Water Temperature:</strong>
+  <%= @extraction.water_temperature %>
+</p>
+
+<p>
+  <strong>Pre-infusion Time:</strong>
+  <%= @extraction.pre_infusion_time %>
+</p>
+
+<p>
+  <strong>Bloom Weight:</strong>
+  <%= @extraction.bloom_weight %>
+</p>
+
+<p>
+  <strong>Extraction Time:</strong>
+  <%= @extraction.extraction_time %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @extraction.comment %>
+</p>
+
+<p>
+  <strong>Accessories:</strong>
+  <%= @extraction.accessories.where.not(accessory_type: 'Grinder').map(&:name).join(', ') %>
+</p>

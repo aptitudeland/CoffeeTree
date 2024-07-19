@@ -1,28 +1,12 @@
 class Extraction < ApplicationRecord
   belongs_to :user
-  belongs_to :coffee
   belongs_to :user_coffee
   has_and_belongs_to_many :accessories
+  belongs_to :brewing_method, class_name: 'Accessory', foreign_key: 'brewing_method_id'
   has_many :tastings
-  validate :must_have_brewer
+  validates :brewing_method, presence: { message: 'must be associated with a brewing method' }
+  validates :user_coffee, presence: true
+  validates :user, presence: true
 
-  private
-
-  def must_have_brewer
-    required_types = [
-      'Aero press',
-      'Cold brew',
-      'Drip coffee',
-      'Espresso',
-      'French press',
-      'Moka Pot',
-      'Pour-Over',
-      'Siphon coffee',
-      'Turkish coffee',
-      'Vietnamese Phin'
-    ]
-    unless accessories.any? { |a| required_types.include?(a.accessory_type) }
-      errors.add(:accessories, "must include at least one brewer")
-    end
-  end
+  attr_accessor :grinder_id
 end
