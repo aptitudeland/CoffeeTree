@@ -6,18 +6,15 @@
 <table>
   <thead>
     <tr>
-      <th>Show</th>
-      <th>Destroy</th>
-      <th>Brewing Method</th>
+      <th></th>
       <th>Coffee</th>
-      <th>Weight In</th>
-      <th>Weight Out</th>
       <th>Grinder</th>
-      <th>Grinder Setting</th>
-      <th> Weight In</th>
+      <th>Brewer</th>
+      <th>Grinder Position</th>
+      <th>Water Temperature</th>
+      <th>Weight In</th>
       <th>Weight Target</th>
       <th>Weight Out</th>
-      <th>Water Temperature</th>
       <th>Pre-infusion Time</th>
       <th>Bloom Weight</th>
       <th>Extraction Time</th>
@@ -30,16 +27,16 @@
   <tbody>
     <% @extractions.each do |extraction| %>
       <tr>
-        <td><%= link_to 'Show', extraction, class: 'btn btn-secondary' %></td>
-        <td><%= link_to 'Destroy', extraction, class: 'btn btn-warning', data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
+        <td><%= link_to 'Show', extraction, class: 'btn btn-secondary' %> <br>
+        <%= link_to 'Destroy', extraction, class: 'btn btn-warning', data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
         <td><%= extraction.brewing_method.name %></td>
         <td><%= extraction.user_coffee.name%></td>
         <td><%= extraction.accessories.find_by(accessory_type: 'Grinder')&.name %></td>
         <td><%= extraction.grinder_set %></td>
+        <td><%= extraction.water_temperature %></td>
         <td><%= extraction.weight_in %></td>
         <td><%= extraction.weight_target %></td>
         <td><%= extraction.weight_out %></td>
-        <td><%= extraction.water_temperature %></td>
         <td><%= extraction.pre_infusion_time %></td>
         <td><%= extraction.bloom_weight %></td>
         <td><%= extraction.extraction_time %></td>

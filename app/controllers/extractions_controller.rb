@@ -75,7 +75,7 @@ class ExtractionsController < ApplicationController
 
   def extraction_params
     params.require(:extraction).permit(
-      :brewing_method_id, :coffee_id, :user_coffee_id, :weight_in,
+      :brewing_method_id, :user_coffee_id, :weight_in,
       :weight_target, :water_temperature, :pre_infusion_time, :bloom_weight,
       :extraction_time, :weight_out, :comment, :grinder_set, :grinder_id, accessory_ids: []
     )
