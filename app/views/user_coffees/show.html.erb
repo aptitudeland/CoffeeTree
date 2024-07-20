@@ -1,0 +1,14 @@
+<div class="new-acc-main-container">
+  <div class="field acc-flex-column-center-container">
+    <h3><%= @user_coffee.coffee.description %></h3>
+    <p>Roasting date : <strong><%= @user_coffee.coffee.roasting_date %></strong></p>
+    <%= simple_form_for @user_coffee, html: {style: "width: 100%;"} do |f| %>
+      <%= f.input :personal_notes%>
+      <%= f.submit "edit note", class: 'btn btn-outline-primary'%>
+    <% end %>
+  </div>
+
+  <div class="actions-buttons">
+    <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+  </div>
+</div>

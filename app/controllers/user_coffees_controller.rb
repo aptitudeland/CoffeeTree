@@ -1,5 +1,5 @@
 class UserCoffeesController < ApplicationController
-  before_action :set_user_coffee, only: %w[show edit update destroy]
+  before_action :set_user_coffee, only: %w[show update]
   def index
     @user_coffees = current_user.user_coffees.active.includes(:coffee)
   end
