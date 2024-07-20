@@ -27,7 +27,7 @@ class UserCoffeesControllerTest < ActionDispatch::IntegrationTest
     assert_equal users(:admin).user_coffees.first.personal_notes, "test for updating user coffee"
   end
 
-  test "POST update with weight_left < 0 should update archived" do
+  test "POST update with weight_left < 0 should update archived to true" do
     assert_equal users(:admin).user_coffees.first.archived, nil
     patch user_coffee_path(users(:admin).user_coffees.first), params: {user_coffee: {weight_left: -1}}
     assert_response :success

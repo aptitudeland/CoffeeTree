@@ -1,7 +1,13 @@
-<div class="new-acc-main-container">
-  <div class="field acc-flex-column-center-container">
-    <h3><%= @user_coffee.coffee.description %></h3>
-    <p>Roasting date : <strong><%= @user_coffee.coffee.roasting_date %></strong></p>
+<div class="container">
+  <div class="field">
+    <div class="d-flex justify-content-between">
+      <h2><%= @user_coffee.coffee.roaster %></h2>
+      <p><strong><%= @user_coffee.coffee.roasting_date %></strong></p>
+    </div>
+    <h5>Name: <i><%= @user_coffee.coffee.name %></i></h5>
+
+    <p>Price: <strong><%= @user_coffee.price %></strong>€</p>
+    <p>Weight left: <%= "#{@user_coffee.weight_left}g / #{@user_coffee.bag_weight}g" %></p>
     <%= simple_form_for @user_coffee, html: {style: "width: 100%;"} do |f| %>
       <%= f.input :personal_notes%>
       <%= f.submit "edit note", class: 'btn btn-outline-primary'%>
