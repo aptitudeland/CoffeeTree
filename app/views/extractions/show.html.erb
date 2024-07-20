@@ -5,23 +5,28 @@
 </div>
 
 <p>
+  <strong>Coffee:</strong>
+   <%= @extraction&.user_coffee&.coffee_details %>
+</p>
+
+<p>
+  <strong>Grinder:</strong>
+  <%= @extraction.accessories.grinder.first.name %>
+</p>
+
+<p>
   <strong>Brewing Method:</strong>
   <%= @extraction.brewing_method.name %>
 </p>
 
 <p>
-  <strong>Coffee:</strong>
-  <%= @extraction.user_coffee.name if @extraction.user_coffee %>
-</p>
-
-<p>
-  <strong>Grinder:</strong>
-  <%= @extraction.accessories.find_by(accessory_type: 'Grinder')&.name %>
-</p>
-
-<p>
   <strong>Grinder Setting:</strong>
   <%= @extraction.grinder_set %>
+</p>
+
+<p>
+  <strong>Water Temperature:</strong>
+  <%= @extraction.water_temperature %>
 </p>
 
 <p>
@@ -37,11 +42,6 @@
 <p>
   <strong>Weight Out:</strong>
   <%= @extraction.weight_out %>
-</p>
-
-<p>
-  <strong>Water Temperature:</strong>
-  <%= @extraction.water_temperature %>
 </p>
 
 <p>
