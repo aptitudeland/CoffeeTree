@@ -1,0 +1,19 @@
+coffee_one:
+  name: Alejandro Marin / BR300
+  roaster: Kultivar
+  roasting_date: 2024-02-05
+  process: Naturel Anaérobie
+  country: CO
+  region: Finca Patio Bonito, Salento, Qunidlo
+  altitude_low: 1650
+  altitude_high: 1650
+
+coffee_two:
+  name: Farms Yungas
+  roaster: Shouka
+  roasting_date: 2023-09-06
+  process: lavee
+  country: BO
+  region: La Paz
+  altitude_low: 1660
+  altitude_high: 1660

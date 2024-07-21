@@ -1,5 +1,134 @@
-<h1>New Extraction</h1>
+<%= simple_form_for(@extraction) do |f| %>
+<div class= "extrac-new-main-container">
+  <div class="actions-buttons">
+    <%= link_to 'Back', 'javascript:history.back()', class: 'btn btn-outline-secondary', onclick: "if (document.referrer === '') { window.location.href = '#{pages_dashboard_path}'; }" %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+  <h1>New Extraction</h1>
 
-<%= render 'form', extraction: @extraction %>
+  <% @default_params ||= {} %>
 
-<%= link_to 'Back', extractions_path %>
+    <div class="extrac-new-step">
+      <div class="extrac-new-acc-container">
+        <div class="extrac-new-acc-single">
+          Coffee
+          <div class="extrac-new-acc-tile">
+          </div>
+          <%= f.input :user_coffee_id,
+              collection: current_user.user_coffees.where(archived: [false, nil]), as: :select,
+              include_blank: true,
+              value_method: :id,
+              label: false,
+              label_method: :coffee_details,
+              selected: @default_params[:user_coffee_id],
+              input_html: { class: 'form-control', multiple: false }%>
+        </div>
+          <div>
+            Grinder
+            <div class="extrac-new-acc-tile">
+            </div>
+            <%= f.input :grinder_id,
+                collection: current_user.accessories.grinder, as: :select,
+                include_blank: true,
+                label: false,
+                value_method: :id,
+                label_method: :name,
+                selected: @default_params[:grinder_id],
+                input_html: { class: 'form-control', multiple: false } %>
+                <%= f.input :grinder_set, label: "Grinder Position", input_html: { class: 'form-control', value: @default_params[:grinder_set] } %>
+          </div>
+        <div>
+          Brewer
+          <div class="extrac-new-acc-tile">
+          </div>
+          <%= f.input :brewing_method_id,
+                collection: current_user.accessories.brewing_method.pluck(:name, :id),
+                label: false,
+                selected: @default_params[:brewing_method_id],
+                input_html: { class: 'form-control' } %>
+          <%= f.input :water_temperature, label: "Water Temperature", input_html: { class: 'form-control', value: @default_params[:water_temperature] } %>
+        </div>
+      </div>
+
+      <div class="extrac-new-acc-secondary">
+        <h4>Optional Accessories</h4>
+        <%= f.input :accessory_ids,
+                    collection: current_user.accessories.optionals,
+                    as: :check_boxes,
+                    label_method: :name,
+                    value_method: :id,
+                    input_html: { class: 'form-check-input' },
+                    item_wrapper_class: 'form-check',
+                    checked: @default_params[:accessory_ids] %>
+      </div>
+
+      <br>
+
+      <div class="">
+        <h4>dials before</h4>
+        <%= f.input :weight_in, label: "Weight In", input_html: { class: 'form-control', value: @default_params[:weight_in] } %>
+        <%= f.input :weight_target, label: "Weight Target", input_html: { class: 'form-control', value: @default_params[:weight_target] } %>
+        <br>
+      </div>
+
+      <%# <div class="">
+        <h4>optional accessories</h4>
+        espresso paper filter <br>
+        WDT<br>
+        Distributor<br>
+        <br>
+      </div> %>
+
+      <div class="">
+        <%= f.input :comment, as: :text, label: "Comment", input_html: { class: 'form-control', value: @default_params[:comment] } %>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="extrac-new-step">
+      TIMER <br>
+      <br>
+      Timer start - Timer reset - Timer preinfusion/bloom end - Timer stop
+      <br>
+    </div>
+
+    <div class="extrac-new-step">
+      <div class="extrac-new-dials-after">
+        <h4>dials after</h4>
+        <%= f.input :pre_infusion_time, label: "Pre-infusion Time", input_html: { class: 'form-control', value: @default_params[:pre_infusion_time] } %>
+        <%= f.input :bloom_weight, label: "Bloom Weight", input_html: { class: 'form-control', value: @default_params[:bloom_weight] } %>
+        <%= f.input :extraction_time, label: "Extraction Time", input_html: { class: 'form-control', value: @default_params[:extraction_time] } %>
+        <%= f.input :weight_out, label: "Weight Out", input_html: { class: 'form-control', value: @default_params[:weight_out] } %>
+        <br>
+      </div>
+    </div>
+
+
+    <%= f.button :submit, class: 'btn btn-primary' %>
+
+ <% end %>
+
+<br>
+  <br>
+
+    <div class="extrac-new-step">
+      <div class="extrac-new-tasting">
+        <h4>Tasting</h4>
+        Global rating slider<br>
+
+        <br>
+        fragrance slider<br>
+        acidity slider<br>
+        flavor slider<br>
+        body slider<br>
+        aftertaste slider<br>
+        balance slider<br>
+        <br>
+        flavors list tool or link<br>
+        <br>
+        comments<br>
+      </div>
+    </div>
+
+</div>

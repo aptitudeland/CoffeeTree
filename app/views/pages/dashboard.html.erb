@@ -15,7 +15,7 @@
         <ul class="list-group">
           <% @extractions.each do |extraction| %>
             <li class="list-group-item">
-              <strong>Method:</strong> <%= extraction.brewing_method %> |
+              <strong>Method:</strong> <%= extraction.brewing_method.name %> |
               <strong>Date:</strong> <%= l(extraction.created_at, format: :short) %>
               <p><%= extraction.comment %></p>
             </li>

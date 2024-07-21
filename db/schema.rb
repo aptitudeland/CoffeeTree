@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_09_090900) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_101023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,11 +61,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_090900) do
   end
 
   create_table "extractions", force: :cascade do |t|
-    t.string "brewing_method"
     t.bigint "coffee_id", null: false
     t.bigint "user_coffee_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "accessory_id", null: false
     t.decimal "weight_in"
     t.integer "water_temperature"
     t.integer "pre_infusion_time"
@@ -75,7 +73,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_090900) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accessory_id"], name: "index_extractions_on_accessory_id"
+    t.integer "grinder_set"
+    t.integer "weight_target"
+    t.bigint "brewing_method_id"
+    t.index ["brewing_method_id"], name: "index_extractions_on_brewing_method_id"
     t.index ["coffee_id"], name: "index_extractions_on_coffee_id"
     t.index ["user_coffee_id"], name: "index_extractions_on_user_coffee_id"
     t.index ["user_id"], name: "index_extractions_on_user_id"
@@ -148,7 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_090900) do
   add_foreign_key "accessories", "users"
   add_foreign_key "coffee_varieties", "coffees"
   add_foreign_key "coffee_varieties", "varieties"
-  add_foreign_key "extractions", "accessories"
+  add_foreign_key "extractions", "accessories", column: "brewing_method_id"
   add_foreign_key "extractions", "coffees"
   add_foreign_key "extractions", "user_coffees"
   add_foreign_key "extractions", "users"
