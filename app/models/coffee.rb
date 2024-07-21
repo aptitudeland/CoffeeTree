@@ -11,8 +11,8 @@ class Coffee < ApplicationRecord
   validates :name, presence: true
   validates :roaster, presence: true
 
-  def coffee_description
-    "#{self.attributes['name']} - #{self.attributes['roaster']} - #{self.attributes['roasting_date']} - #{self.attributes['country']}"
+  def description
+    "#{self.attributes['roaster']} - #{self.attributes['name']} - #{self.country_name}"
   end
 
   def country_name

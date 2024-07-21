@@ -1,0 +1,9 @@
+uc_one:
+  user: admin
+  coffee: coffee_one
+  bag_weight: 250
+
+uc_two:
+  user: admin
+  coffee: coffee_two
+  bag_weight: 250

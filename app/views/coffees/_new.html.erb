@@ -27,5 +27,6 @@
         input_html: {step: 50, value: coffee.altitude_high || 1500} %>
     </div>
   </div>
-  <%= ff.association :varieties if coffee %>
+  <%# <%= ff.association :varieties, as: :checkboxes if coffee %> %>
+  <%= ff.association :varieties, label_method: :name, as: :check_boxes, collection: Variety.all  %>
 <% end %>
