@@ -1,8 +1,14 @@
 # db/seeds.rb
 require 'csv'
 
-puts "Destroying all coffee_varieties"
-CoffeeVariety.destroy_all
+puts "Destroying all previous flavors"
+Flavor.destroy_all
+
+puts "Destroying all previous tastings"
+Tasting.destroy_all
+
+puts "Destroying all previous extractions"
+Extraction.destroy_all
 
 puts "Destroying all user_coffees"
 UserCoffee.destroy_all
@@ -10,14 +16,14 @@ UserCoffee.destroy_all
 puts "Destroying all previous accessories"
 Accessory.destroy_all
 
-puts "Destroying all previous varieties"
-Variety.destroy_all
-
-puts "Destroying all previous flavors"
-Flavor.destroy_all
+puts "Destroying all coffee_varieties"
+CoffeeVariety.destroy_all
 
 puts "Destroying all previous coffees"
 Coffee.destroy_all
+
+puts "Destroying all previous varieties"
+Variety.destroy_all
 
 # Create an admin user if it doesn't already exist
 unless User.exists?(email: 'admin@example.com')
@@ -186,7 +192,7 @@ cof.varieties.push(Variety.find_by(name: 'Bourbon'))
 cof.save!
 
 cof = Coffee.new(
-  
+
   name: "Farms Yungas",
   roaster: "Shouka",
   roasting_date: "2023-09-06",
