@@ -174,8 +174,8 @@ end
 puts "Created accessories for the admin user"
 
 cof = Coffee.new(
-  name: "Farms Yungas",
-  roaster: "Shouka",
+  name: "Alejandro Marin / BR300",
+  roaster: "Kultivar",
   roasting_date: "2024-02-05",
   process: "Naturel Anaérobie",
   country: "CO",
@@ -186,8 +186,9 @@ cof.varieties.push(Variety.find_by(name: 'Bourbon'))
 cof.save!
 
 cof = Coffee.new(
-  name: "Alejandro Marin / BR300",
-  roaster: "Kultivar",
+  
+  name: "Farms Yungas",
+  roaster: "Shouka",
   roasting_date: "2023-09-06",
   process: "Lavée",
   country: "BO",
