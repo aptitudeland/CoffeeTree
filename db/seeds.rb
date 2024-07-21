@@ -192,7 +192,6 @@ cof.varieties.push(Variety.find_by(name: 'Bourbon'))
 cof.save!
 
 cof = Coffee.new(
-
   name: "Farms Yungas",
   roaster: "Shouka",
   roasting_date: "2023-09-06",
