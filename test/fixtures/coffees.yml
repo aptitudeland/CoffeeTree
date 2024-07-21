@@ -1,6 +1,6 @@
 coffee_one:
-  name: Farms Yungas
-  roaster: Shouka
+  name: Alejandro Marin / BR300
+  roaster: Kultivar
   roasting_date: 2024-02-05
   process: Naturel Anaérobie
   country: CO
@@ -9,8 +9,8 @@ coffee_one:
   altitude_high: 1650
 
 coffee_two:
-  name: Alejandro Marin / BR300
-  roaster: Kultivar
+  name: Farms Yungas
+  roaster: Shouka
   roasting_date: 2023-09-06
   process: lavee
   country: BO
