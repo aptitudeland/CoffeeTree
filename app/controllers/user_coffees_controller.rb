@@ -27,7 +27,6 @@ class UserCoffeesController < ApplicationController
     @user_coffee = UserCoffee.create(user_coffee_params)
     @user_coffee.user = current_user
     @coffee = Coffee.find_by(coffee_params)
-
     unless @coffee
       @coffee = Coffee.create(coffee_params)
     end
@@ -36,7 +35,6 @@ class UserCoffeesController < ApplicationController
     @user_coffee.coffee.varieties << Variety.where(id: params[:coffee][:variety_ids][1..])
 
     if @user_coffee.save
-      raise
       redirect_to user_coffees_path
     else
       render :new, status: :unprocessable_entity

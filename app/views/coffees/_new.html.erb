@@ -28,11 +28,12 @@
     </div>
   </div>
   <%# <%= ff.association :varieties, as: :checkboxes if coffee %>
-  <div class="multiple-select-block">
+  <div class="multiple-select-block" data-controller="multiple-select-block">
+    <input class="form-control multiple-select-searchbox" type="text" form="notthisform" name="varieties-filter" data-multiple-select-block-target="varietiesFilter" data-action="input->multiple-select-block#filterItems" placeholder="Find varieties...">
     <%= ff.association :varieties,
       label_method: :name,
       as: :check_boxes,
-      input_html: {class: 'multiple-select-item'},
+      input_html: {class: 'multiple-select-item', data: {"multiple-select-block-target": 'inputs'}},
       item_wrapper_class: 'multiple-select-wrapper'
     %>
   </div>
