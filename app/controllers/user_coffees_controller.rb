@@ -33,7 +33,10 @@ class UserCoffeesController < ApplicationController
     end
     @user_coffee.coffee = @coffee
 
+    @user_coffee.coffee.varieties << Variety.where(id: params[:coffee][:variety_ids][1..])
+
     if @user_coffee.save
+      raise
       redirect_to user_coffees_path
     else
       render :new, status: :unprocessable_entity
