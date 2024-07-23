@@ -1,0 +1,47 @@
+  .multiple-select-block {
+    width: 100%;
+    border-radius: 2em;
+    margin-bottom: 1em;
+
+    fieldset {
+      height: 6rem;
+      overflow-y: scroll;
+      gap: 0.2rem;
+    }
+
+    .form-label, legend {
+      display: none;
+    }
+  }
+
+.multiple-select-wrapper {
+  color: white;
+}
+
+.multiple-select-item {
+  position: absolute;
+  transform: scale(0);
+}
+
+.multiple-select-item + label {
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  padding: 0.1em 0.2em;
+  color: $primary;
+  background-color: $white;
+  border: 2px solid $primary;
+  font-weight: 600;
+  margin: 0.1rem;
+}
+
+.multiple-select-item:checked + label {
+  color: $white;
+  background-color: $primary;
+  border: 2px solid #000000;
+}
+
+.multiple-select-searchbox {
+  margin: 1rem auto;
+  border-radius: 0.2rem;
+  width: 100%;
+}

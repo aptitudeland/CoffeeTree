@@ -39,7 +39,6 @@ class ExtractionsController < ApplicationController
     if params[:extraction][:grinder_id].present?
       @extraction.accessories << Accessory.find(params[:extraction][:grinder_id])
     end
-
     if @extraction.save
       redirect_to @extraction, notice: 'Extraction was successfully created.'
     else
