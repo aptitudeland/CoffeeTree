@@ -1,4 +1,4 @@
-<div class="index-main-container">
+<div class="index-main-container" data-controller="user-coffees-index">
   <h1><%= current_user.nickname %>'s coffees</h1>
   <div class="actions-buttons">
     <%= link_to 'Add New', new_user_coffee_path, class: 'btn btn-primary' %>
@@ -6,15 +6,15 @@
 
   <div class="index-items-list">
     <% @user_coffees.each do |user_coffee| %>
-      <div class="index-item">
+      <div class="index-item" data-user-coffee-index-target="item">
         <div class="index-item-content">
           <div class="item-content-line">
             <%= link_to user_coffee_path(user_coffee) do %>
               <h4><%= user_coffee.coffee.description %></h4>
             <% end %>
-            <%= link_to  user_coffee_path(user_coffee, user_coffee: {archived: true}), data: {turbo_method: :patch, turbo_confirm: "Êtes-vous sûr?"} do %>
-              <i class="fa-solid fa-xmark"></i>
-            <% end %>
+            <a href="<%= user_coffee_path(user_coffee, user_coffee: {archived: true})%>" data-action="click->user-coffees-index#archiveCoffee">
+              <i class="fa-solid fa-trash"></i>
+            </a>
           </div>
           <div class="item-content-line">
             <p>Roasting date: <strong><%= user_coffee.coffee.roasting_date %></strong></p>
