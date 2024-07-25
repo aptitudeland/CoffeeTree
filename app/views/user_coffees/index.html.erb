@@ -1,7 +1,7 @@
 <div class="index-main-container">
-  <h1><%= current_user.nickname %>'s coffees</h1>
+  <h1><%= t('.coffees_of', username: current_user.nickname) %></h1>
   <div class="actions-buttons">
-    <%= link_to 'Add New', new_user_coffee_path, class: 'btn btn-primary' %>
+    <%= link_to t('.new_coffee'), new_user_coffee_path, class: 'btn btn-primary' %>
   </div>
 
   <div class="index-items-list">
@@ -17,10 +17,10 @@
             <% end %>
           </div>
           <div class="item-content-line">
-            <p>Roasting date: <strong><%= user_coffee.coffee.roasting_date %></strong></p>
+            <p><%= t(:roasting_date) %>: <strong><%= l user_coffee.coffee.roasting_date, format: :default %></strong></p>
           </div>
           <div class="item-content-line">
-            <p>Price: <strong><%= user_coffee.price %></strong>€</p>
+            <p><%= t(:price) %>: <strong><%= number_to_currency(user_coffee.price) %></strong></p>
             <p><%= "#{user_coffee.weight_left}g / #{user_coffee.bag_weight}g" %></p>
           </div>
         </div>

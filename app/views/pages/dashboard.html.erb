@@ -1,13 +1,13 @@
 <div class="container mt-5">
-  <h1>Dashboard</h1>
+  <h1><%= t('.dashboard') %></h1>
 
   <!-- Extractions Section -->
   <div class="card mt-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h2>Recent Extractions</h2>
+      <h2><%= t('.recent_extractions') %></h2>
       <div>
-        <%= link_to 'New', new_extraction_path, class: 'btn btn-primary mx-1' %>
-        <%= link_to 'View All', extractions_path, class: 'btn btn-secondary mx-1' %>
+        <%= link_to t('.new'), new_extraction_path, class: 'btn btn-primary mx-1' %>
+        <%= link_to t('.view_all'), extractions_path, class: 'btn btn-secondary mx-1' %>
       </div>
     </div>
     <div class="card-body">
@@ -15,14 +15,14 @@
         <ul class="list-group">
           <% @extractions.each do |extraction| %>
             <li class="list-group-item">
-              <strong>Method:</strong> <%= extraction.brewing_method.name %> |
-              <strong>Date:</strong> <%= l(extraction.created_at, format: :short) %>
+              <strong><%= t('method') %>:</strong> <%= extraction.brewing_method.name %> |
+              <strong><%= t(:date) %>:</strong> <%= l(extraction.created_at, format: :short) %>
               <p><%= extraction.comment %></p>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <p>No extractions found.</p>
+        <p><%= t('.no_extractions_found') %></p>
       <% end %>
     </div>
   </div>
@@ -30,10 +30,10 @@
   <!-- User Coffees Section -->
   <div class="card mt-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h2>Recent Coffees</h2>
+      <h2><%= t('.recent_coffees') %></h2>
       <div>
-        <%= link_to 'New', new_user_coffee_path, class: 'btn btn-primary mx-1' %>
-        <%= link_to 'View All', user_coffees_path, class: 'btn btn-secondary mx-1' %>
+        <%= link_to t('.new'), new_user_coffee_path, class: 'btn btn-primary mx-1' %>
+        <%= link_to t('.view_all'), user_coffees_path, class: 'btn btn-secondary mx-1' %>
       </div>
     </div>
     <div class="card-body">
@@ -41,14 +41,14 @@
         <ul class="list-group">
           <% @user_coffees.each do |coffee| %>
             <li class="list-group-item">
-              <strong>Name:</strong> <%= coffee.coffee.name %> |
-              <strong>Weight Left:</strong> <%= coffee.weight_left %>g
+              <strong><%= t(:name) %>:</strong> <%= coffee.coffee.name %> |
+              <strong><%= t(:weight_left) %>:</strong> <%= coffee.weight_left %>g
               <p><%= coffee.personal_notes %></p>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <p>No coffees found.</p>
+        <p><%= t('.no_coffees_found') %></p>
       <% end %>
     </div>
   </div>
@@ -56,15 +56,15 @@
   <!-- Accessories Section -->
 <div class="card mt-4">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h2>Accessories</h2>
+    <h2><%= t('.accessories') %></h2>
     <div>
-      <%= link_to 'New', new_accessory_path, class: 'btn btn-primary mx-1' %>
-      <%= link_to 'View All', accessories_path, class: 'btn btn-secondary mx-1' %>
+      <%= link_to t('.new'), new_accessory_path, class: 'btn btn-primary mx-1' %>
+      <%= link_to t('.view_all'), accessories_path, class: 'btn btn-secondary mx-1' %>
     </div>
   </div>
   <div class="card-body">
     <!-- Brewing Methods Section -->
-    <h3>Last 3 registered Brewing Methods</h3>
+    <h3><%= t('.last_3_brewing_methods') %></h3>
     <% if @brewing_methods.present? %>
       <ul class="list-group mb-4">
         <% @brewing_methods.each do |accessory| %>
@@ -74,11 +74,11 @@
         <% end %>
       </ul>
     <% else %>
-      <p>No brewing methods found.</p>
+      <p><%= t('.no_brewing_methods_found') %></p>
     <% end %>
 
     <!-- Other Accessories Section -->
-    <h3>Last 5 Accessories</h3>
+    <h3><%= t('.last_5_accessories') %></h3>
     <% if @other_accessories.present? %>
       <ul class="list-group">
         <% @other_accessories.each do |accessory| %>
@@ -88,7 +88,7 @@
         <% end %>
       </ul>
     <% else %>
-      <p>No other accessories found.</p>
+      <p><%= t('.no_other_accessories_found') %></p>
     <% end %>
   </div>
 </div>
