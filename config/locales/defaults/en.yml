@@ -1,0 +1,86 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+en:
+  accessories:
+    index:
+      accessories_of: "%{username}'s accessories"
+      brewing_methods: "Brewing Methods"
+      grinder_range: "Grinder Range"
+      other_accessories: "Other Accessories"
+      type: "Type"
+    show:
+      grinder_range: "Grinder Range"
+    new:
+      which_kind_accessory: "Which kind of accessory?"
+      brewing_methods: "Brewing methods"
+      other_accessories: "Other accessories"
+      give_accessory_name: "Give a name to your new accessory"
+      grinder_max_position: "Max position"
+      comments: "Comments"
+      add_accessory: "Add an accessory"
+  add_new: "Add New"
+  back: "Back"
+  beans: "Beans"
+  brews: "Brews"
+  dashboard_short: "Board"
+  date: "Date"
+  delete: "Delete"
+  extraction: "Extraction"
+  find_coffee_batch: "Find coffee batch"
+  find_varieties: "Find varieties..."
+  new: "New"
+  pages:
+    dashboard:
+      accessories: "Accessories"
+      dashboard: "Dashboard"
+      recent_coffees: "Recent coffees"
+      recent_extractions: "Recent extractions"
+      new: "New"
+      view_all: "View All"
+      no_brewing_methods_found: "No brewing methods found."
+      no_coffees_found: "No coffees found."
+      no_extractions_found: "No extractions found."
+      no_other_accessories_found: "No other accessories found."
+      last_3_brewing_methods: "Last three registered brewing methods."
+      last_5_accessories: "Last 5 accessories."
+      method: "Method"
+  price: "Price"
+  roaster: "Roaster"
+  roasting_date: "Roasting date"
+  toys: "Toys"
+  user_coffees:
+    index:
+      coffees_of: "%{username}'s coffees"
+      new_coffee: "New coffee"
+    new:
+      register_new_coffee: "Register new coffee"
+    show:
+      edit_note: "Edit note"
+  weight_left: "Weight left"

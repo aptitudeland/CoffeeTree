@@ -1,0 +1,43 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'Nécessaire'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Merci de vérifier le problème:"
+    # Examples
+    labels:
+      defaults:
+        password: 'Mot de passe'
+        name: "Nom"
+      user:
+        new:
+          email: 'E-mail.'
+        edit:
+          email: 'E-mail.'
+      user_coffee:
+        bag_weight: "Poids"
+        weight_left: "Poids restant"
+        price: "Prix"
+        personal_notes: "Commentaire"
+      coffee:
+        roaster: "Torréfacteur"
+        roasting_date: "Torréfaction"
+        process: "Traitement"
+        country: "Pays"
+        region: "Région"
+        altitude_low: "Alt. min."
+        altitude_high: "Alt. max."
+    hints:
+      defaults:
+        username: "Nom d'utilisateur"
+        password: 'Charactères spéciaux interdits, merci.'
+    include_blanks:
+      defaults:
+    prompts:
+      defaults:

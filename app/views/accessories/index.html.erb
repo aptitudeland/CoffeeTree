@@ -1,21 +1,21 @@
 <div class="acc-index-main-container">
-  <h1><%= current_user.nickname %>'s accessories</h1>
+  <h1><%= t('.accessories_of', username: current_user.nickname) %></h1>
   <div class="acc-index-actions-buttons">
-    <%= link_to 'Back', pages_dashboard_path, class: 'btn btn-outline-secondary' %>
-    <%= link_to 'Add New', new_accessory_path, class: 'btn btn-primary' %>
+    <%= link_to t(:back), pages_dashboard_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to t(:add_new), new_accessory_path, class: 'btn btn-primary' %>
   </div>
 
   <div class="acc-index-list">
     <!-- Brewing Methods Section -->
     <div class="acc-index-section">
-      <h4>Brewing Methods</h4>
+      <h4><%= t('.brewing_methods') %></h4>
       <% @brewing_methods.each do |accessory| %>
         <div class="acc-index-item-wrapper">
           <%= link_to accessory_path(accessory), class: "acc-index-item" do %>
             <%= image_tag Accessory.image_path(accessory.accessory_type), alt: accessory.name, class: 'acc-index-image' %>
             <div class="acc-index-item-content">
               <h4><%= accessory.name %></h4>
-              <p>Type: <%= accessory.accessory_type %></p>
+              <p><%= t('.type') %>: <%= accessory.accessory_type %></p>
               <% if accessory.accessory_type == 'Grinder' %>
                 <p>Grinder Range: <%= accessory.grinder_min %> - <%= accessory.grinder_max %></p>
               <% end %>
@@ -32,7 +32,7 @@
 
     <!-- Other Accessories Section -->
     <div class="acc-index-section">
-      <h4>Other Accessories</h4>
+      <h4><%= t('.other_accessories') %></h4>
       <% @other_accessories.each do |accessory| %>
         <div class="acc-index-item-wrapper">
           <%= link_to accessory_path(accessory), class: "acc-index-item" do %>
@@ -41,7 +41,7 @@
               <h4><%= accessory.name %></h4>
               <p>Type: <%= accessory.accessory_type %></p>
               <% if accessory.accessory_type == 'Grinder' %>
-                <p>Grinder Range: <%= accessory.grinder_min %> - <%= accessory.grinder_max %></p>
+                <p><%= t('.grinder_range') %>: <%= accessory.grinder_min %> - <%= accessory.grinder_max %></p>
               <% end %>
               <p><%= accessory.comments %></p>
             </div>

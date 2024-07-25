@@ -3,17 +3,17 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get '/dashboard', to: 'pages#dashboard', as: 'pages_dashboard'
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  resources :accessories
-  resources :extractions
-  resources :tastings
-  resources :flavors, only: [:index, :show]
-  resources :user_coffees
-  resources :coffees
-  resources :varieties, only: [:index, :show]
+  scope "(:locale)", locale: /en|fr/ do
+    get '/dashboard', to: 'pages#dashboard', as: 'pages_dashboard'
+    resources :accessories
+    resources :extractions
+    resources :tastings
+    resources :flavors, only: [:index, :show]
+    resources :user_coffees
+    resources :coffees
+    resources :varieties, only: [:index, :show]
+  end
   # Add other routes if necessary
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

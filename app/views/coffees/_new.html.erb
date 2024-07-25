@@ -11,25 +11,25 @@
     </div>
   </div>
   <%= ff.input :name %>
-  <div class="d-flex justify-content-center">
-    <button class="btn btn-primary" data-action="click->user-coffee-form#fetchCoffee"> Find coffee batch </button>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" data-action="click->user-coffee-form#fetchCoffee"><%= t(:find_coffee_batch) %></button>
   </div>
   <%= ff.input :process %>
   <%= ff.input :country, selected: coffee.country %>
   <%= ff.input :region %>
   <div class="row">
     <div class="col">
-      <%= ff.input :altitude_low, label: "Min alt.",
+      <%= ff.input :altitude_low,
         input_html: {step: 50, value: coffee.altitude_low || 1500} %>
     </div>
     <div class="col">
-      <%= ff.input :altitude_high, label: "Max alt.",
+      <%= ff.input :altitude_high,
         input_html: {step: 50, value: coffee.altitude_high || 1500} %>
     </div>
   </div>
   <%# <%= ff.association :varieties, as: :checkboxes if coffee %>
   <div class="multiple-select-block" data-controller="multiple-select-block">
-    <input class="form-control multiple-select-searchbox" type="text" form="notthisform" name="varieties-filter" data-multiple-select-block-target="varietiesFilter" data-action="input->multiple-select-block#filterItems" placeholder="Find varieties...">
+    <input class="form-control multiple-select-searchbox" type="text" form="notthisform" name="varieties-filter" data-multiple-select-block-target="varietiesFilter" data-action="input->multiple-select-block#filterItems" placeholder="<%= t(:find_varieties) %>">
     <%= ff.association :varieties,
       label_method: :name,
       as: :check_boxes,
