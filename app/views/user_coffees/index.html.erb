@@ -18,7 +18,7 @@
             </a>
           </div>
           <div class="item-content-line">
-            <p><%= t(:roasting_date) %>: <strong><%= l user_coffee.coffee.roasting_date, format: :default %></strong></p>
+            <p><%= t(:roasting_date) %>: <strong><%= user_coffee.coffee.roasting_date ? l(user_coffee.coffee.roasting_date, format: :default) : t(:non_available) %></strong></p>
           </div>
           <div class="item-content-line">
             <p><%= t(:price) %>: <strong><%= number_to_currency(user_coffee.price) %></strong></p>
